@@ -54,7 +54,7 @@ export function LogEnergyForm({ onSuccess }: { onSuccess?: () => void }) {
         <Select 
           value={form.watch('subcategory')} 
           onValueChange={(val) => {
-            form.setValue('subcategory', val as any)
+            form.setValue('subcategory', val as 'electricity' | 'gas' | 'heating_oil')
             if (val === 'electricity') form.setValue('unit', 'kwh')
             if (val === 'gas') form.setValue('unit', 'therms')
             if (val === 'heating_oil') form.setValue('unit', 'liters')
@@ -80,7 +80,7 @@ export function LogEnergyForm({ onSuccess }: { onSuccess?: () => void }) {
           />
           <Select 
             value={form.watch('unit')} 
-            onValueChange={(val) => form.setValue('unit', val as any)}
+            onValueChange={(val) => form.setValue('unit', val as 'kwh' | 'liters' | 'therms')}
           >
             <SelectTrigger className="w-[120px]"><SelectValue /></SelectTrigger>
             <SelectContent>
@@ -99,7 +99,7 @@ export function LogEnergyForm({ onSuccess }: { onSuccess?: () => void }) {
         <Label>Period</Label>
         <Select 
           value={form.watch('period')} 
-          onValueChange={(val) => form.setValue('period', val as any)}
+          onValueChange={(val) => form.setValue('period', val as 'daily' | 'weekly' | 'monthly')}
         >
           <SelectTrigger><SelectValue placeholder="Select period" /></SelectTrigger>
           <SelectContent>

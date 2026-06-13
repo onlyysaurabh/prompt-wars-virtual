@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function LandingPage() {
   return (
-    <main>
+    <main id="main-content">
       {/* Hero with gradient mesh backdrop */}
       <section className="relative min-h-[90vh] overflow-hidden">
         <GradientMesh />

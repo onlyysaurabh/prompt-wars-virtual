@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Insight } from '@/lib/types'
 
 export default function InsightsPage() {
-  const [insights, setInsights] = useState<any[]>([])
+  const [insights, setInsights] = useState<Insight[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

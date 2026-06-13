@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
+import { CarbonAction } from '@/lib/types'
 
 export function useCarbonActions() {
-  const [actions, setActions] = useState<any[]>([])
+  const [actions, setActions] = useState<CarbonAction[]>([])
   const [loading, setLoading] = useState(true)
 
   const fetchActions = async () => {

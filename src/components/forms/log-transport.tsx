@@ -53,7 +53,7 @@ export function LogTransportForm({ onSuccess }: { onSuccess?: () => void }) {
         <Label>Mode of Transport</Label>
         <Select 
           value={form.watch('subcategory')} 
-          onValueChange={(val) => form.setValue('subcategory', val as any)}
+          onValueChange={(val) => form.setValue('subcategory', val as 'flight' | 'car' | 'bus' | 'train' | 'bike' | 'walk')}
         >
           <SelectTrigger><SelectValue placeholder="Select mode" /></SelectTrigger>
           <SelectContent>

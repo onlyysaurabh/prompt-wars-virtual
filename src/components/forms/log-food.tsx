@@ -52,7 +52,7 @@ export function LogFoodForm({ onSuccess }: { onSuccess?: () => void }) {
         <Label>Food Type</Label>
         <Select 
           value={form.watch('subcategory')} 
-          onValueChange={(val) => form.setValue('subcategory', val as any)}
+          onValueChange={(val) => form.setValue('subcategory', val as 'meat_beef' | 'meat_chicken' | 'meat_pork' | 'dairy' | 'vegetables' | 'grains' | 'processed' | 'dining_out')}
         >
           <SelectTrigger><SelectValue placeholder="Select food type" /></SelectTrigger>
           <SelectContent>
@@ -79,7 +79,7 @@ export function LogFoodForm({ onSuccess }: { onSuccess?: () => void }) {
           />
           <Select 
             value={form.watch('unit')} 
-            onValueChange={(val) => form.setValue('unit', val as any)}
+            onValueChange={(val) => form.setValue('unit', val as 'kg' | 'servings' | 'meals')}
           >
             <SelectTrigger className="w-[120px]"><SelectValue /></SelectTrigger>
             <SelectContent>

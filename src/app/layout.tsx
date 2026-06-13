@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { SkipLink } from '@/components/layout/skip-link'
 import { FocusManager } from '@/components/layout/focus-manager'
+import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SkipLink />
         <FocusManager />
         {children}
+        <Toaster />
       </body>
     </html>
   )
