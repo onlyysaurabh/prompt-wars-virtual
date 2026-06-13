@@ -3,6 +3,9 @@ import Link from 'next/link'
 import { CO2Ticker } from '@/components/landing/co2-ticker'
 import { FeatureCards } from '@/components/landing/feature-cards'
 import { ScreenshotShowcase } from '@/components/landing/screenshot-showcase'
+import { FloatingOrbs } from '@/components/landing/floating-orbs'
+import { ParticleGrid } from '@/components/landing/particle-grid'
+import { HeroEntrance } from '@/components/landing/hero-entrance'
 
 export const metadata: Metadata = {
   title: 'CarbonTrack — Understand, Track, and Reduce Your Carbon Footprint',
@@ -20,41 +23,12 @@ export default function LandingPage() {
       {/* Hero with CO2 Ticker */}
       <section className="relative min-h-[90vh] bg-midnight overflow-hidden flex flex-col items-center justify-center py-24">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ember/5 via-midnight to-midnight pointer-events-none" />
+        <FloatingOrbs />
+        <ParticleGrid />
         
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="max-w-2xl text-left">
-              {/* Eyebrow pill */}
-              <span className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest bg-ember/10 text-ember rounded-full mb-6 border border-ember/20">
-                Precision Ecology
-              </span>
-              
-              {/* Hero headline */}
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif text-paper mb-6 leading-tight">
-                Track Your Carbon <br className="hidden sm:block" />
-                <span className="text-ember italic">Footprint.</span>
-              </h1>
-              
-              <p className="text-lg text-slate mb-8 max-w-xl">
-                Carbon tracking as atmospheric science. Precise, data-rich, and personal. 
-                Understand your emissions and join the movement to reduce global CO₂ levels.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/signup"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-midnight bg-ember rounded-full hover:bg-ember-deep transition-colors shadow-[0_0_20px_rgba(245,158,11,0.3)]"
-                >
-                  Start Tracking
-                </Link>
-                <Link
-                  href="#features"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-paper bg-transparent border border-slate/30 rounded-full hover:bg-slate/10 transition-colors"
-                >
-                  Explore Features
-                </Link>
-              </div>
-            </div>
+            <HeroEntrance />
             
             {/* CO2 Ticker replaces DashboardMockup and GradientMesh */}
             <div className="w-full max-w-lg mx-auto lg:max-w-none">
@@ -65,8 +39,12 @@ export default function LandingPage() {
       </section>
       
       {/* Features section */}
-      <section id="features" className="py-24 bg-paper">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section id="features" className="py-24 bg-paper relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-ember/5 rounded-full blur-3xl animate-float-slow" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-sage/5 rounded-full blur-3xl animate-drift" style={{ animationDuration: '25s' }} />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-midnight mb-6">
               Everything You Need to Reduce Your Impact
@@ -87,6 +65,7 @@ export default function LandingPage() {
       {/* CTA section */}
       <section className="py-24 bg-midnight relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-ember/10 via-midnight to-midnight pointer-events-none" />
+        <FloatingOrbs />
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-serif text-paper mb-6">
             Ready to Make a Difference?
@@ -96,9 +75,10 @@ export default function LandingPage() {
           </p>
           <Link
             href="/signup"
-            className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-midnight bg-ember rounded-full hover:bg-ember-deep transition-colors shadow-[0_0_30px_rgba(245,158,11,0.4)]"
+            className="group inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-midnight bg-ember rounded-full hover:bg-ember-deep transition-all duration-300 shadow-[0_0_30px_rgba(245,158,11,0.4)] hover:shadow-[0_0_50px_rgba(245,158,11,0.6)] hover:scale-105"
           >
             Get Started Now
+            <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
           </Link>
         </div>
       </section>

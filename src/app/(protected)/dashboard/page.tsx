@@ -4,6 +4,33 @@ import { CategoryBreakdown } from '@/components/charts/category-breakdown'
 import { ComparisonChart } from '@/components/charts/comparison-chart'
 import { MotionWrapper } from '@/components/motion-wrapper'
 
+function StatCard({ label, value, unit, delay }: { label: string; value: string; unit?: string; delay: number }) {
+  return (
+    <MotionWrapper delay={delay} hover>
+      <div className="group rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_50px_rgba(0,0,0,0.25)] hover:border-ember/20 transition-all duration-300 hover:-translate-y-0.5 h-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-ember/0 to-ember/0 group-hover:from-ember/5 group-hover:to-transparent transition-all duration-500 pointer-events-none rounded-2xl" />
+        <h3 className="relative text-base font-medium text-slate uppercase tracking-wider">{label}</h3>
+        <p className="relative mt-4 text-4xl sm:text-5xl font-mono font-bold text-ember">
+          {value}
+          {unit && <span className="text-2xl text-ember/70 ml-1">{unit}</span>}
+        </p>
+      </div>
+    </MotionWrapper>
+  )
+}
+
+function ChartCard({ title, delay, children }: { title: string; delay: number; children: React.ReactNode }) {
+  return (
+    <MotionWrapper delay={delay} hover>
+      <div className="group rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_50px_rgba(0,0,0,0.25)] hover:border-white/15 transition-all duration-300 hover:-translate-y-0.5 h-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/[0.02] group-hover:to-transparent transition-all duration-500 pointer-events-none rounded-2xl" />
+        <h3 className="relative text-lg font-serif text-paper mb-6">{title}</h3>
+        <div className="relative">{children}</div>
+      </div>
+    </MotionWrapper>
+  )
+}
+
 export default async function DashboardPage() {
   const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -51,38 +78,24 @@ export default async function DashboardPage() {
       </MotionWrapper>
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <MotionWrapper delay={0.2} className="rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-          <h3 className="text-base font-medium text-slate uppercase tracking-wider">Total Footprint</h3>
-          <p className="mt-4 text-4xl sm:text-5xl font-mono font-bold text-ember">{totalCo2.toFixed(1)} <span className="text-2xl text-ember/70">kg</span></p>
-        </MotionWrapper>
-        <MotionWrapper delay={0.3} className="rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-          <h3 className="text-base font-medium text-slate uppercase tracking-wider">Actions Logged</h3>
-          <p className="mt-4 text-4xl sm:text-5xl font-mono font-bold text-ember">{actionsList.length}</p>
-        </MotionWrapper>
-        <MotionWrapper delay={0.4} className="rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-          <h3 className="text-base font-medium text-slate uppercase tracking-wider">Daily Average</h3>
-          <p className="mt-4 text-4xl sm:text-5xl font-mono font-bold text-ember">
-            {timeData.length > 0 ? (totalCo2 / timeData.length).toFixed(1) : '0'} <span className="text-2xl text-ember/70">kg</span>
-          </p>
-        </MotionWrapper>
+        <StatCard label="Total Footprint" value={totalCo2.toFixed(1)} unit="kg" delay={0.2} />
+        <StatCard label="Actions Logged" value={String(actionsList.length)} delay={0.3} />
+        <StatCard label="Daily Average" value={timeData.length > 0 ? (totalCo2 / timeData.length).toFixed(1) : '0'} unit="kg" delay={0.4} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <MotionWrapper delay={0.5} className="rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-          <h3 className="text-lg font-serif text-paper mb-6">Emissions Over Time</h3>
+        <ChartCard title="Emissions Over Time" delay={0.5}>
           <EmissionsOverTime data={timeData} />
-        </MotionWrapper>
+        </ChartCard>
         
-        <MotionWrapper delay={0.6} className="rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-          <h3 className="text-lg font-serif text-paper mb-6">Category Breakdown</h3>
+        <ChartCard title="Category Breakdown" delay={0.6}>
           <CategoryBreakdown data={categoryData} />
-        </MotionWrapper>
+        </ChartCard>
       </div>
 
-      <MotionWrapper delay={0.7} className="rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-        <h3 className="text-lg font-serif text-paper mb-6">Comparison vs Average</h3>
+      <ChartCard title="Comparison vs Average" delay={0.7}>
         <ComparisonChart data={comparisonData} />
-      </MotionWrapper>
+      </ChartCard>
     </div>
   )
 }
