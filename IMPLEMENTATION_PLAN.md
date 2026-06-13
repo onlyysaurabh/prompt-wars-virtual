@@ -63,7 +63,7 @@
 
 ## Phase 0: Landing Page + Design System (Day 0)
 
-- [ ] **0.1 Design System Integration**
+- [x] **0.1 Design System Integration**
 
 Map DESIGN.md tokens to Tailwind config for brand consistency:
 
@@ -171,7 +171,7 @@ export default config
 }
 ```
 
-- [ ] **0.2 Landing Page Implementation**
+- [x] **0.2 Landing Page Implementation**
 
 **Hero section with gradient mesh + feature cards:**
 
