@@ -12,7 +12,7 @@ import { transportActionSchema } from '@/lib/validators/action'
 import { toast } from 'sonner'
 import { useState } from 'react'
 
-type FormData = z.infer<typeof transportActionSchema>
+type FormData = z.input<typeof transportActionSchema>
 
 export function LogTransportForm({ onSuccess }: { onSuccess?: () => void }) {
   const [loading, setLoading] = useState(false)

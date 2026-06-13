@@ -17,15 +17,18 @@ export function EmissionsOverTime({ data }: Props) {
     <figure role="img" aria-label={description}>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data} aria-hidden="true">
-          <XAxis dataKey="date" stroke="hsl(var(--muted-foreground))" />
-          <YAxis stroke="hsl(var(--muted-foreground))" />
-          <Tooltip />
+          <XAxis dataKey="date" stroke="#94A3B8" />
+          <YAxis stroke="#94A3B8" />
+          <Tooltip 
+            contentStyle={{ backgroundColor: '#0F172A', borderColor: 'rgba(250,250,249,0.1)', color: '#FAFAF9' }} 
+            itemStyle={{ color: '#F59E0B' }}
+          />
           <Line
             type="monotone"
             dataKey="co2_kg"
-            stroke="hsl(var(--primary))"
+            stroke="#F59E0B"
             strokeWidth={2}
-            dot={{ r: 4, fill: 'hsl(var(--primary))' }}
+            dot={{ r: 4, fill: '#F59E0B' }}
           />
         </LineChart>
       </ResponsiveContainer>

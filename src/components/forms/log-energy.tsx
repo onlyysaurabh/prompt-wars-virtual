@@ -11,7 +11,7 @@ import { energyActionSchema } from '@/lib/validators/action'
 import { toast } from 'sonner'
 import { useState } from 'react'
 
-type FormData = z.infer<typeof energyActionSchema>
+type FormData = z.input<typeof energyActionSchema>
 
 export function LogEnergyForm({ onSuccess }: { onSuccess?: () => void }) {
   const [loading, setLoading] = useState(false)

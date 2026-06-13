@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { CarbonAction } from '@/lib/types'
 
 export function useCarbonActions() {
   const [actions, setActions] = useState<CarbonAction[]>([])
   const [loading, setLoading] = useState(true)
 
-  const fetchActions = async () => {
+  const fetchActions = useCallback(async () => {
     setLoading(true)
     try {
       const res = await fetch('/api/actions')
@@ -18,11 +18,12 @@ export function useCarbonActions() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
 
   useEffect(() => {
-    fetchActions()
-  }, [])
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchActions()
+  }, [fetchActions])
 
   return { actions, loading, refetch: fetchActions }
 }
