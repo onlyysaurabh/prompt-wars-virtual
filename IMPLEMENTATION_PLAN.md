@@ -402,7 +402,7 @@ export function FeatureCards() {
 
 ## Phase 1: Project Scaffold + Auth (Day 1)
 
-- [ ] **1.1 Initialize Next.js 15 + Dependencies**
+- [x] **1.1 Initialize Next.js 15 + Dependencies**
 
 ```bash
 npx create-next-app@latest carbon-tracker \
@@ -437,7 +437,7 @@ npm i -D prettier eslint-config-prettier
 npm i @sentry/nextjs  # Optional: error tracking
 ```
 
-- [ ] **1.2 Folder Structure**
+- [x] **1.2 Folder Structure**
 
 ```
 src/
@@ -509,7 +509,7 @@ src/
     └── api/                    # API route tests
 ```
 
-- [ ] **1.3 Supabase Schema (SQL)**
+- [x] **1.3 Supabase Schema (SQL)**
 
 ```sql
 -- Enable UUID extension
@@ -604,7 +604,7 @@ CREATE INDEX idx_carbon_actions_category ON carbon_actions(user_id, category);
 CREATE INDEX idx_carbon_summaries_period ON carbon_summaries(user_id, period_type, period_start DESC);
 ```
 
-- [ ] **1.4 Auth Setup**
+- [x] **1.4 Auth Setup**
 
 ```typescript
 // src/lib/supabase/middleware.ts
