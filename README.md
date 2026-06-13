@@ -2,6 +2,14 @@
 
 CarbonTrack is a production-grade carbon footprint tracker that helps users log daily activities across transport, energy, food, and shopping categories, visualize emissions through interactive charts, and receive personalized reduction insights benchmarked against country averages. Built with TypeScript strict mode, Zod v4 validation, and Supabase Row-Level Security, the codebase prioritizes code quality and security at every layer. React Server Components and edge-ready architecture ensure zero client JS overhead and minimal resource utilization. A comprehensive test suite—Vitest unit tests, Playwright E2E flows, and jest-axe accessibility audits—guarantees stability across the full stack. WCAG AA contrast-safe chart palettes, skip links, ARIA roles, semantic HTML, and screen reader data table alternatives make the app fully inclusive. The solution directly addresses every requirement of the problem statement: 4-category action logging, personalized insights, gamified badges, and country benchmarking in a polished, deployable package.
 
+## Screenshots
+
+<div align="center">
+  <img src="public/screenshot1.png" alt="CarbonTrack Screenshot 1" width="30%" />
+  <img src="public/screenshot2.png" alt="CarbonTrack Screenshot 2" width="30%" />
+  <img src="public/screenshot3.png" alt="CarbonTrack Screenshot 3" width="30%" />
+</div>
+
 ## Features
 
 - **Carbon Action Logging** — Log daily activities across Transport, Energy, Food, and Shopping categories
