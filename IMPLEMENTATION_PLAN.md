@@ -1117,7 +1117,7 @@ export async function POST(request: Request) {
 
 ## Phase 4: Accessibility + Security (Day 4)
 
-- [ ] **4.1 Accessibility Implementation**
+- [x] **4.1 Accessibility Implementation**
 
 **Skip link + focus management:**
 
@@ -1153,7 +1153,7 @@ export const CHART_COLORS = {
 export const LINE_PATTERNS = ['solid', 'dashed', 'dotted', 'dashdot'] as const
 ```
 
-- [ ] **4.2 Security Implementation**
+- [x] **4.2 Security Implementation**
 
 **Security headers (next.config.ts):**
 
@@ -1232,7 +1232,7 @@ export function checkRateLimit(key: string, limit: number = 30, windowMs: number
 }
 ```
 
-- [ ] **4.3 Error Handling**
+- [x] **4.3 Error Handling**
 
 **Error boundary component:**
 
@@ -1567,9 +1567,9 @@ npm audit fix
 | - [ ] 8 | Insights engine | lib/carbon/insights.ts | 1 hr |
 | - [x] 9 | AI accessibility (JSON-LD, meta, semantic) | layout.tsx, API routes | 1 hr |
 | - [ ] 10 | Badges + gamification | Badge components + logic | 1 hr |
-| - [ ] 11 | Accessibility pass | jest-axe tests, keyboard nav | 1.5 hr |
-| - [ ] 12 | Security hardening | Headers, CSP, rate limiting | 1 hr |
-| - [ ] 13 | Error handling | Error boundaries, API errors | 1 hr |
+| - [x] 11 | Accessibility pass | jest-axe tests, keyboard nav | 1.5 hr |
+| - [x] 12 | Security hardening | Headers, CSP, rate limiting | 1 hr |
+| - [x] 13 | Error handling | Error boundaries, API errors | 1 hr |
 | - [ ] 14 | Unit + integration tests | __tests__/ | 2 hr |
 | - [ ] 15 | E2E tests | e2e/ | 1.5 hr |
 | - [ ] 16 | Deploy + verify | vercel.json, env vars | 30 min |
