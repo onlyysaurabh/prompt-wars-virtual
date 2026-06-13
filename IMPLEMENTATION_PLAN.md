@@ -63,7 +63,7 @@
 
 ## Phase 0: Landing Page + Design System (Day 0)
 
-### 0.1 Design System Integration
+- [ ] **0.1 Design System Integration**
 
 Map DESIGN.md tokens to Tailwind config for brand consistency:
 
@@ -171,7 +171,7 @@ export default config
 }
 ```
 
-### 0.2 Landing Page Implementation
+- [ ] **0.2 Landing Page Implementation**
 
 **Hero section with gradient mesh + feature cards:**
 
@@ -402,7 +402,7 @@ export function FeatureCards() {
 
 ## Phase 1: Project Scaffold + Auth (Day 1)
 
-### 1.1 Initialize Next.js 15 + Dependencies
+- [ ] **1.1 Initialize Next.js 15 + Dependencies**
 
 ```bash
 npx create-next-app@latest carbon-tracker \
@@ -437,7 +437,7 @@ npm i -D prettier eslint-config-prettier
 npm i @sentry/nextjs  # Optional: error tracking
 ```
 
-### 1.2 Folder Structure
+- [ ] **1.2 Folder Structure**
 
 ```
 src/
@@ -509,7 +509,7 @@ src/
     └── api/                    # API route tests
 ```
 
-### 1.3 Supabase Schema (SQL)
+- [ ] **1.3 Supabase Schema (SQL)**
 
 ```sql
 -- Enable UUID extension
@@ -604,7 +604,7 @@ CREATE INDEX idx_carbon_actions_category ON carbon_actions(user_id, category);
 CREATE INDEX idx_carbon_summaries_period ON carbon_summaries(user_id, period_type, period_start DESC);
 ```
 
-### 1.4 Auth Setup
+- [ ] **1.4 Auth Setup**
 
 ```typescript
 // src/lib/supabase/middleware.ts
@@ -659,7 +659,7 @@ export const config = {
 
 ## Phase 2: Core Features (Days 2-3)
 
-### 2.1 Carbon Action Logging
+- [ ] **2.1 Carbon Action Logging**
 
 **4 categories of input:**
 
@@ -708,7 +708,7 @@ export const carbonActionSchema = z.discriminatedUnion('category', [
 ])
 ```
 
-### 2.2 Dashboard with Charts
+- [ ] **2.2 Dashboard with Charts**
 
 ```tsx
 // src/app/(protected)/dashboard/page.tsx
@@ -783,7 +783,7 @@ export default async function DashboardPage() {
 }
 ```
 
-### 2.3 Personalized Insights Engine
+- [ ] **2.3 Personalized Insights Engine**
 
 ```typescript
 // src/lib/carbon/insights.ts
@@ -880,7 +880,7 @@ export function generateInsights(
 
 ## Phase 3: AI Accessibility (Day 3)
 
-### 3.1 Structured Data (JSON-LD)
+- [ ] **3.1 Structured Data (JSON-LD)**
 
 **Root layout with comprehensive structured data:**
 
@@ -956,7 +956,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-### 3.2 Semantic HTML Patterns
+- [ ] **3.2 Semantic HTML Patterns**
 
 **Accessible navigation:**
 
@@ -1049,7 +1049,7 @@ export function EmissionsOverTime({ data }: Props) {
 }
 ```
 
-### 3.3 Machine-Readable Content
+- [ ] **3.3 Machine-Readable Content**
 
 **API routes for AI consumption:**
 
@@ -1117,7 +1117,7 @@ export async function POST(request: Request) {
 
 ## Phase 4: Accessibility + Security (Day 4)
 
-### 4.1 Accessibility Implementation
+- [ ] **4.1 Accessibility Implementation**
 
 **Skip link + focus management:**
 
@@ -1153,7 +1153,7 @@ export const CHART_COLORS = {
 export const LINE_PATTERNS = ['solid', 'dashed', 'dotted', 'dashdot'] as const
 ```
 
-### 4.2 Security Implementation
+- [ ] **4.2 Security Implementation**
 
 **Security headers (next.config.ts):**
 
@@ -1232,7 +1232,7 @@ export function checkRateLimit(key: string, limit: number = 30, windowMs: number
 }
 ```
 
-### 4.3 Error Handling
+- [ ] **4.3 Error Handling**
 
 **Error boundary component:**
 
@@ -1329,7 +1329,7 @@ export function validationErrorResponse(details: Record<string, string[]>) {
 
 ## Phase 5: Testing (Day 5)
 
-### 5.1 Test Setup
+- [ ] **5.1 Test Setup**
 
 ```typescript
 // vitest.config.ts
@@ -1350,7 +1350,7 @@ export default defineConfig({
 })
 ```
 
-### 5.2 Test Categories
+- [ ] **5.2 Test Categories**
 
 | Test Type | Tool | What to Test | Target Coverage |
 |-----------|------|--------------|-----------------|
@@ -1438,7 +1438,7 @@ describe('EmissionsOverTime', () => {
 })
 ```
 
-### 5.3 Playwright E2E
+- [ ] **5.3 Playwright E2E**
 
 ```typescript
 // e2e/auth-and-logging.spec.ts
@@ -1481,7 +1481,7 @@ test.describe('Carbon Tracker', () => {
 
 ## Phase 6: Polish + Deploy (Day 6)
 
-### 6.1 Gamification
+- [ ] **6.1 Gamification**
 
 ```typescript
 // Badge definitions
@@ -1496,7 +1496,7 @@ export const BADGES = {
 } as const
 ```
 
-### 6.2 Country Averages for Benchmarking
+- [ ] **6.2 Country Averages for Benchmarking**
 
 ```typescript
 // kg CO₂ per day per capita (2024 estimates)
@@ -1507,7 +1507,7 @@ export const COUNTRY_AVERAGES = {
 } as const
 ```
 
-### 6.3 Vercel Deployment Checklist
+- [ ] **6.3 Vercel Deployment Checklist**
 
 ```bash
 # 1. Install Vercel CLI
@@ -1539,7 +1539,7 @@ npm audit
 npm audit fix
 ```
 
-### 6.4 Performance Budget
+- [ ] **6.4 Performance Budget**
 
 | Metric | Target | How |
 |--------|--------|-----|
@@ -1556,23 +1556,23 @@ npm audit fix
 
 | Step | Task | Files | Est. Time |
 |------|------|-------|-----------|
-| 0 | Landing page + design system | `page.tsx`, `tailwind.config.js`, landing components | 3 hr |
-| 1 | Scaffold Next.js + deps | `package.json`, configs | 30 min |
-| 2 | Supabase setup + schema | SQL file, client libs | 1 hr |
-| 3 | Auth flow (login/signup) | Auth pages, middleware | 1.5 hr |
-| 4 | Layout + nav + skip link | Layout components | 1 hr |
-| 5 | Carbon action forms (4 categories) | Form components + Zod | 2 hr |
-| 6 | API routes (CRUD + insights) | Route handlers | 1.5 hr |
-| 7 | Dashboard + charts | Dashboard page + Recharts | 2 hr |
-| 8 | Insights engine | lib/carbon/insights.ts | 1 hr |
-| 9 | AI accessibility (JSON-LD, meta, semantic) | layout.tsx, API routes | 1 hr |
-| 10 | Badges + gamification | Badge components + logic | 1 hr |
-| 11 | Accessibility pass | jest-axe tests, keyboard nav | 1.5 hr |
-| 12 | Security hardening | Headers, CSP, rate limiting | 1 hr |
-| 13 | Error handling | Error boundaries, API errors | 1 hr |
-| 14 | Unit + integration tests | __tests__/ | 2 hr |
-| 15 | E2E tests | e2e/ | 1.5 hr |
-| 16 | Deploy + verify | vercel.json, env vars | 30 min |
+| - [ ] 0 | Landing page + design system | `page.tsx`, `tailwind.config.js`, landing components | 3 hr |
+| - [ ] 1 | Scaffold Next.js + deps | `package.json`, configs | 30 min |
+| - [ ] 2 | Supabase setup + schema | SQL file, client libs | 1 hr |
+| - [ ] 3 | Auth flow (login/signup) | Auth pages, middleware | 1.5 hr |
+| - [ ] 4 | Layout + nav + skip link | Layout components | 1 hr |
+| - [ ] 5 | Carbon action forms (4 categories) | Form components + Zod | 2 hr |
+| - [ ] 6 | API routes (CRUD + insights) | Route handlers | 1.5 hr |
+| - [ ] 7 | Dashboard + charts | Dashboard page + Recharts | 2 hr |
+| - [ ] 8 | Insights engine | lib/carbon/insights.ts | 1 hr |
+| - [ ] 9 | AI accessibility (JSON-LD, meta, semantic) | layout.tsx, API routes | 1 hr |
+| - [ ] 10 | Badges + gamification | Badge components + logic | 1 hr |
+| - [ ] 11 | Accessibility pass | jest-axe tests, keyboard nav | 1.5 hr |
+| - [ ] 12 | Security hardening | Headers, CSP, rate limiting | 1 hr |
+| - [ ] 13 | Error handling | Error boundaries, API errors | 1 hr |
+| - [ ] 14 | Unit + integration tests | __tests__/ | 2 hr |
+| - [ ] 15 | E2E tests | e2e/ | 1.5 hr |
+| - [ ] 16 | Deploy + verify | vercel.json, env vars | 30 min |
 | **Total** | | | **~22 hrs** |
 
 ---
