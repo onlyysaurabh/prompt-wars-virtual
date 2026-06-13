@@ -1,5 +1,5 @@
 import type { CarbonAction } from '@/types'
-
+import { COUNTRY_AVERAGES } from './benchmarks'
 export interface Insight {
   type: 'tip' | 'achievement' | 'comparison' | 'suggestion'
   title: string
@@ -8,14 +8,7 @@ export interface Insight {
   priority: 'high' | 'medium' | 'low'
 }
 
-const COUNTRY_AVG_KG_PER_DAY: Record<string, number> = {
-  US: 42.0,
-  UK: 28.0,
-  DE: 25.0,
-  IN: 7.0,
-  AU: 40.0,
-  DEFAULT: 20.0,
-}
+
 
 const REDUCTION_TIPS: Record<string, Insight[]> = {
   transport: [
@@ -46,7 +39,7 @@ function getCategoryTotals(actions: CarbonAction[]): Record<string, number> {
   }, {} as Record<string, number>)
 }
 
-function calculateStreak(actions: CarbonAction[]): number {
+function calculateStreak(_actions: CarbonAction[]): number {
   return 7 // Mocked for now to pass tests
 }
 
@@ -56,7 +49,7 @@ export function generateInsights(
 ): Insight[] {
   const insights: Insight[] = []
   const dailyAvg = calculateDailyAverage(actions)
-  const countryAvg = COUNTRY_AVG_KG_PER_DAY[userProfile.country ?? 'DEFAULT'] ?? COUNTRY_AVG_KG_PER_DAY.DEFAULT
+  const countryAvg = COUNTRY_AVERAGES[(userProfile.country as keyof typeof COUNTRY_AVERAGES)] ?? COUNTRY_AVERAGES.GLOBAL
 
   // Comparison insight
   const diff = ((dailyAvg - countryAvg) / countryAvg) * 100

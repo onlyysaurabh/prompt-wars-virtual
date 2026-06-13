@@ -1481,7 +1481,7 @@ test.describe('Carbon Tracker', () => {
 
 ## Phase 6: Polish + Deploy (Day 6)
 
-- [ ] **6.1 Gamification**
+- [x] **6.1 Gamification**
 
 ```typescript
 // Badge definitions
@@ -1496,7 +1496,7 @@ export const BADGES = {
 } as const
 ```
 
-- [ ] **6.2 Country Averages for Benchmarking**
+- [x] **6.2 Country Averages for Benchmarking**
 
 ```typescript
 // kg CO₂ per day per capita (2024 estimates)
@@ -1566,13 +1566,13 @@ npm audit fix
 | - [ ] 7 | Dashboard + charts | Dashboard page + Recharts | 2 hr |
 | - [ ] 8 | Insights engine | lib/carbon/insights.ts | 1 hr |
 | - [x] 9 | AI accessibility (JSON-LD, meta, semantic) | layout.tsx, API routes | 1 hr |
-| - [ ] 10 | Badges + gamification | Badge components + logic | 1 hr |
+| - [x] 10 | Badges + gamification | Badge components + logic | 1 hr |
 | - [x] 11 | Accessibility pass | jest-axe tests, keyboard nav | 1.5 hr |
 | - [x] 12 | Security hardening | Headers, CSP, rate limiting | 1 hr |
 | - [x] 13 | Error handling | Error boundaries, API errors | 1 hr |
 | - [x] 14 | Unit + integration tests | __tests__/ | 2 hr |
 | - [x] 15 | E2E tests | e2e/ | 1.5 hr |
-| - [ ] 16 | Deploy + verify | vercel.json, env vars | 30 min |
+| - [x] 16 | Deploy + verify | vercel.json, env vars | 30 min |
 | **Total** | | | **~22 hrs** |
 
 ---
@@ -1608,7 +1608,7 @@ npm audit fix
 - [ ] Unit tests pass with 80%+ coverage
 - [ ] E2E test covers sign up → log action → view dashboard flow
 - [ ] Lighthouse accessibility score ≥ 95
-- [ ] App deploys to Vercel with green build
+- [x] App deploys to Vercel with green build
 
 ---
 

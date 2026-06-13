@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { generateInsights } from '@/lib/carbon/insights'
+import { generateInsights, type Insight } from '@/lib/carbon/insights'
 
 describe('generateInsights', () => {
   it('should return comparison insight when above average', () => {
@@ -15,7 +15,7 @@ describe('generateInsights', () => {
     }))
 
     const insights = generateInsights(actions, { country: 'US' })
-    const comparison = insights.find((i: any) => i.type === 'comparison')
+    const comparison = insights.find((i: Insight) => i.type === 'comparison')
     expect(comparison).toBeDefined()
     expect(comparison!.title).toContain('Room to improve')
   })
@@ -32,6 +32,6 @@ describe('generateInsights', () => {
       created_at: new Date().toISOString() 
     }]
     const insights = generateInsights(actions, { country: 'US' })
-    expect(insights.some((i: any) => i.title.includes('cycling') || i.title.includes('transit'))).toBe(true)
+    expect(insights.some((i: Insight) => i.title.includes('cycling') || i.title.includes('transit'))).toBe(true)
   })
 })
