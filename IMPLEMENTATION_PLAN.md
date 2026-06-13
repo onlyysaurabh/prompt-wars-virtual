@@ -1329,7 +1329,7 @@ export function validationErrorResponse(details: Record<string, string[]>) {
 
 ## Phase 5: Testing (Day 5)
 
-- [ ] **5.1 Test Setup**
+- [x] **5.1 Test Setup**
 
 ```typescript
 // vitest.config.ts
@@ -1350,7 +1350,7 @@ export default defineConfig({
 })
 ```
 
-- [ ] **5.2 Test Categories**
+- [x] **5.2 Test Categories**
 
 | Test Type | Tool | What to Test | Target Coverage |
 |-----------|------|--------------|-----------------|
@@ -1438,7 +1438,7 @@ describe('EmissionsOverTime', () => {
 })
 ```
 
-- [ ] **5.3 Playwright E2E**
+- [x] **5.3 Playwright E2E**
 
 ```typescript
 // e2e/auth-and-logging.spec.ts
@@ -1570,8 +1570,8 @@ npm audit fix
 | - [x] 11 | Accessibility pass | jest-axe tests, keyboard nav | 1.5 hr |
 | - [x] 12 | Security hardening | Headers, CSP, rate limiting | 1 hr |
 | - [x] 13 | Error handling | Error boundaries, API errors | 1 hr |
-| - [ ] 14 | Unit + integration tests | __tests__/ | 2 hr |
-| - [ ] 15 | E2E tests | e2e/ | 1.5 hr |
+| - [x] 14 | Unit + integration tests | __tests__/ | 2 hr |
+| - [x] 15 | E2E tests | e2e/ | 1.5 hr |
 | - [ ] 16 | Deploy + verify | vercel.json, env vars | 30 min |
 | **Total** | | | **~22 hrs** |
 
