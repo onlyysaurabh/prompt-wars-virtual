@@ -880,7 +880,7 @@ export function generateInsights(
 
 ## Phase 3: AI Accessibility (Day 3)
 
-- [ ] **3.1 Structured Data (JSON-LD)**
+- [x] **3.1 Structured Data (JSON-LD)**
 
 **Root layout with comprehensive structured data:**
 
@@ -956,7 +956,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **3.2 Semantic HTML Patterns**
+- [x] **3.2 Semantic HTML Patterns**
 
 **Accessible navigation:**
 
@@ -1049,7 +1049,7 @@ export function EmissionsOverTime({ data }: Props) {
 }
 ```
 
-- [ ] **3.3 Machine-Readable Content**
+- [x] **3.3 Machine-Readable Content**
 
 **API routes for AI consumption:**
 
@@ -1565,7 +1565,7 @@ npm audit fix
 | - [ ] 6 | API routes (CRUD + insights) | Route handlers | 1.5 hr |
 | - [ ] 7 | Dashboard + charts | Dashboard page + Recharts | 2 hr |
 | - [ ] 8 | Insights engine | lib/carbon/insights.ts | 1 hr |
-| - [ ] 9 | AI accessibility (JSON-LD, meta, semantic) | layout.tsx, API routes | 1 hr |
+| - [x] 9 | AI accessibility (JSON-LD, meta, semantic) | layout.tsx, API routes | 1 hr |
 | - [ ] 10 | Badges + gamification | Badge components + logic | 1 hr |
 | - [ ] 11 | Accessibility pass | jest-axe tests, keyboard nav | 1.5 hr |
 | - [ ] 12 | Security hardening | Headers, CSP, rate limiting | 1 hr |
