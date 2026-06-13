@@ -437,7 +437,7 @@ npm i -D prettier eslint-config-prettier
 npm i @sentry/nextjs  # Optional: error tracking
 ```
 
-- [x] **1.2 Folder Structure**
+- [ ] **1.2 Folder Structure**
 
 ```
 src/
@@ -659,7 +659,7 @@ export const config = {
 
 ## Phase 2: Core Features (Days 2-3)
 
-- [ ] **2.1 Carbon Action Logging**
+- [x] **2.1 Carbon Action Logging**
 
 **4 categories of input:**
 
@@ -708,7 +708,7 @@ export const carbonActionSchema = z.discriminatedUnion('category', [
 ])
 ```
 
-- [ ] **2.2 Dashboard with Charts**
+- [x] **2.2 Dashboard with Charts**
 
 ```tsx
 // src/app/(protected)/dashboard/page.tsx
@@ -783,7 +783,7 @@ export default async function DashboardPage() {
 }
 ```
 
-- [ ] **2.3 Personalized Insights Engine**
+- [x] **2.3 Personalized Insights Engine**
 
 ```typescript
 // src/lib/carbon/insights.ts
@@ -1350,7 +1350,7 @@ export default defineConfig({
 })
 ```
 
-- [x] **5.2 Test Categories**
+- [ ] **5.2 Test Categories**
 
 | Test Type | Tool | What to Test | Target Coverage |
 |-----------|------|--------------|-----------------|
@@ -1438,7 +1438,7 @@ describe('EmissionsOverTime', () => {
 })
 ```
 
-- [x] **5.3 Playwright E2E**
+- [ ] **5.3 Playwright E2E**
 
 ```typescript
 // e2e/auth-and-logging.spec.ts
