@@ -3,19 +3,23 @@
 import Image from 'next/image'
 import { MotionWrapper } from '@/components/motion-wrapper'
 
+import screenshot1 from '../../../public/screenshot1.png'
+import screenshot2 from '../../../public/screenshot2.png'
+import screenshot3 from '../../../public/screenshot3.png'
+
 const screenshots = [
   {
-    src: '/screenshot1.png',
+    src: screenshot1,
     alt: 'CarbonTrack dashboard showing daily emissions breakdown by category',
     caption: 'Dashboard',
   },
   {
-    src: '/screenshot2.png',
+    src: screenshot2,
     alt: 'CarbonTrack insights panel with personalized reduction tips',
     caption: 'Insights',
   },
   {
-    src: '/screenshot3.png',
+    src: screenshot3,
     alt: 'CarbonTrack action log for recording daily activities',
     caption: 'Actions',
   },
@@ -83,7 +87,7 @@ export function ScreenshotShowcase() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {screenshots.map((screenshot, i) => (
-            <div key={screenshot.src}>
+            <div key={screenshot.caption}>
               <DeviceFrame screenshot={screenshot} index={i} />
               <MotionWrapper delay={0.4 + i * 0.1}>
                 <p className="mt-4 text-center text-sm text-slate/60 font-mono uppercase tracking-widest">
