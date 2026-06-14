@@ -8,10 +8,8 @@ import { LogEnergyForm } from '@/components/forms/log-energy'
 import { LogFoodForm } from '@/components/forms/log-food'
 import { LogShoppingForm } from '@/components/forms/log-shopping'
 
-import { CarbonAction } from '@/lib/types'
-
 export default function ActionsPage() {
-  const [actions, setActions] = useState<CarbonAction[]>([])
+  const [actions, setActions] = useState<any[]>([])
 
   const fetchActions = async () => {
     try {

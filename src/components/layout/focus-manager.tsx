@@ -7,11 +7,8 @@ export function FocusManager() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const main = document.getElementById('main-content')
-    if (main) {
-      main.tabIndex = -1
-      main.focus({ preventScroll: true })
-    }
+    // Reset focus to body on route change for screen readers
+    document.body.focus()
   }, [pathname])
 
   return null

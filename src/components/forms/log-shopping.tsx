@@ -51,7 +51,7 @@ export function LogShoppingForm({ onSuccess }: { onSuccess?: () => void }) {
         <Label>Purchase Category</Label>
         <Select 
           value={form.watch('subcategory')} 
-          onValueChange={(val) => form.setValue('subcategory', val as 'clothing' | 'electronics' | 'furniture' | 'other')}
+          onValueChange={(val) => form.setValue('subcategory', val as any)}
         >
           <SelectTrigger><SelectValue placeholder="Select purchase category" /></SelectTrigger>
           <SelectContent>

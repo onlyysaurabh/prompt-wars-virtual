@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { CreateGoalForm } from '@/components/forms/create-goal'
 import { Progress } from '@/components/ui/progress'
-import { Goal } from '@/lib/types'
 
 export default function GoalsPage() {
-  const [goals, setGoals] = useState<Goal[]>([])
+  const [goals, setGoals] = useState<any[]>([])
 
   const fetchGoals = async () => {
     try {
@@ -54,21 +53,20 @@ export default function GoalsPage() {
           ) : (
             <div className="space-y-4">
               {goals.map((goal) => {
-                // Mock progress calculation for now
-                const progressValue = 0
-                const percent = Math.min(100, Math.round((progressValue / goal.target_co2_kg) * 100) || 0)
+                // Mock progress calculation for now, or use target_co2 vs current_progress
+                const progressValue = goal.current_progress || 0
+                const percent = Math.min(100, Math.round((progressValue / goal.target_co2) * 100) || 0)
                 
                 return (
                   <Card key={goal.id}>
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-start">
-                        <CardTitle className="text-lg capitalize">{goal.goal_type.replace('_', ' ')}</CardTitle>
+                        <CardTitle className="text-lg">{goal.title}</CardTitle>
                         <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full font-medium capitalize">
-                          {goal.active ? 'Active' : 'Inactive'}
+                          {goal.status}
                         </span>
                       </div>
-                      <CardDescription>Target: {goal.target_co2_kg} kg CO₂</CardDescription>
-
+                      <CardDescription>Target: {goal.target_co2} kg CO₂ by {new Date(goal.deadline).toLocaleDateString()}</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-2">

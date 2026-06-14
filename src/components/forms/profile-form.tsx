@@ -2,30 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { toast } from 'sonner'
 
-const profileSchema = z.object({
-  display_name: z.string().optional(),
-  country: z.string().optional(),
-  household_size: z.coerce.number().min(1).optional(),
-  energy_source: z.string().optional(),
-  diet_type: z.string().optional(),
-  car_info: z.string().optional(),
-})
-
-type ProfileFormData = z.infer<typeof profileSchema>
-
 export function ProfileForm() {
   const [loading, setLoading] = useState(false)
-  const { register, handleSubmit, setValue, watch, reset } = useForm<ProfileFormData>({
-    resolver: zodResolver(profileSchema),
-  })
+  const { register, handleSubmit, setValue, watch, reset } = useForm()
 
   useEffect(() => {
     async function fetchProfile() {
@@ -38,7 +23,7 @@ export function ProfileForm() {
     fetchProfile()
   }, [reset])
 
-  const onSubmit = async (data: ProfileFormData) => {
+  const onSubmit = async (data: any) => {
     setLoading(true)
     try {
       const res = await fetch('/api/profile', {

@@ -1,10 +1,10 @@
-import { createServerClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import { EmissionsOverTime } from '@/components/charts/emissions-over-time'
 import { CategoryBreakdown } from '@/components/charts/category-breakdown'
 import { ComparisonChart } from '@/components/charts/comparison-chart'
 
 export default async function DashboardPage() {
-  const supabase = await createServerClient()
+  const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) return null
