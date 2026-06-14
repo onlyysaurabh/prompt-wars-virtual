@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CO2Ticker } from '@/components/landing/co2-ticker'
 import { FeatureCards } from '@/components/landing/feature-cards'
-import { ScreenshotShowcase } from '@/components/landing/screenshot-showcase'
 
 export const metadata: Metadata = {
   title: 'CarbonTrack — Understand, Track, and Reduce Your Carbon Footprint',
@@ -80,9 +79,6 @@ export default function LandingPage() {
           <FeatureCards />
         </div>
       </section>
-      
-      {/* Screenshots */}
-      <ScreenshotShowcase />
       
       {/* CTA section */}
       <section className="py-24 bg-midnight relative overflow-hidden">
