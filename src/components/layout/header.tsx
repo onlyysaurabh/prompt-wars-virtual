@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { LogOut } from 'lucide-react'
+import { logout } from '@/app/(auth)/actions'
 
 export function Header() {
   return (
@@ -36,6 +38,15 @@ export function Header() {
                 Insights
                 <span className="absolute bottom-0 left-0 right-0 h-px bg-ember scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
+            </li>
+            <li role="none" className="ml-2 pl-2 border-l border-white/10">
+              <form action={logout}>
+                <button type="submit" role="menuitem" className="relative text-sm font-medium text-slate hover:text-ember transition-colors py-1 group flex items-center gap-1.5">
+                  <LogOut className="size-3.5" />
+                  Sign Out
+                  <span className="absolute bottom-0 left-0 right-0 h-px bg-ember scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                </button>
+              </form>
             </li>
           </ul>
         </div>

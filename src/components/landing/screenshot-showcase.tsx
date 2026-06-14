@@ -26,23 +26,23 @@ function DeviceFrame({ screenshot, index }: { screenshot: typeof screenshots[num
   
   return (
     <MotionWrapper delay={0.2 + index * 0.15} whileInView hover>
-      <div className={`group rounded-xl overflow-hidden border border-white/10 bg-midnight shadow-2xl transition-all duration-500 hover:shadow-[0_0_60px_rgba(245,158,11,0.15)] hover:scale-[1.02] ${isCenter ? 'md:-mt-4' : ''}`}>
+      <div className={`group rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-2xl transition-all duration-500 hover:shadow-[0_0_60px_rgba(245,158,11,0.15)] hover:scale-[1.02] ${isCenter ? 'md:-mt-4' : ''}`}>
         {/* Browser chrome */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/5">
+        <div className="flex items-center gap-2 px-4 py-3 bg-white/[0.06] border-b border-white/5">
           <div className="flex gap-1.5">
             <span className="block w-2.5 h-2.5 rounded-full bg-red-400/60 group-hover:bg-red-400 transition-colors" />
             <span className="block w-2.5 h-2.5 rounded-full bg-yellow-400/60 group-hover:bg-yellow-400 transition-colors" />
             <span className="block w-2.5 h-2.5 rounded-full bg-green-400/60 group-hover:bg-green-400 transition-colors" />
           </div>
           <div className="flex-1 mx-4">
-            <div className="mx-auto max-w-[180px] h-5 rounded-full bg-white/5 border border-white/5 flex items-center justify-center">
-              <span className="text-[10px] text-white/20 font-mono">carbontrack.app</span>
+            <div className="mx-auto max-w-[180px] h-5 rounded-full bg-white/[0.08] border border-white/10 flex items-center justify-center">
+              <span className="text-[10px] text-white/30 font-mono">carbontrack.app</span>
             </div>
           </div>
         </div>
 
         {/* Screenshot image */}
-        <div className="relative aspect-[4/3] bg-midnight">
+        <div className="relative aspect-[4/3] bg-midnight ring-1 ring-inset ring-white/10">
           <Image
             src={screenshot.src}
             alt={screenshot.alt}

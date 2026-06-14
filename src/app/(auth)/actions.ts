@@ -23,6 +23,14 @@ export async function login(formData: FormData) {
   redirect('/dashboard')
 }
 
+export async function logout() {
+  const supabase = await createServerClient()
+  const { error } = await supabase.auth.signOut()
+  if (error) throw new Error(error.message)
+  revalidatePath('/', 'layout')
+  redirect('/')
+}
+
 export async function signup(formData: FormData) {
   const supabase = await createServerClient()
 
