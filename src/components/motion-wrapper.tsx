@@ -9,8 +9,6 @@ interface MotionWrapperProps {
   delay?: number
   yOffset?: number
   duration?: number
-  whileInView?: boolean
-  hover?: boolean
 }
 
 export function MotionWrapper({ 
@@ -18,19 +16,13 @@ export function MotionWrapper({
   className,
   delay = 0,
   yOffset = 20,
-  duration = 0.5,
-  whileInView = false,
-  hover = false,
+  duration = 0.5
 }: MotionWrapperProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: yOffset }}
-      {...(whileInView
-        ? { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' } }
-        : { animate: { opacity: 1, y: 0 } }
-      )}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
-      {...(hover ? { whileHover: { y: -4, transition: { duration: 0.2 } } } : {})}
       className={className}
     >
       {children}

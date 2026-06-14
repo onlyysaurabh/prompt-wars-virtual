@@ -41,16 +41,16 @@ export default function ActionsPage() {
       <div className="grid lg:grid-cols-3 gap-8">
         <MotionWrapper delay={0.2} className="lg:col-span-2">
           <Tabs defaultValue="transport" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-white/5 border border-white/10 p-1 relative">
-              <TabsTrigger value="transport" className="data-[state=active]:bg-ember data-[state=active]:text-midnight text-slate data-[state=active]:shadow-[0_0_12px_rgba(245,158,11,0.3)] transition-all duration-300">Transport</TabsTrigger>
-              <TabsTrigger value="energy" className="data-[state=active]:bg-ember data-[state=active]:text-midnight text-slate data-[state=active]:shadow-[0_0_12px_rgba(245,158,11,0.3)] transition-all duration-300">Energy</TabsTrigger>
-              <TabsTrigger value="food" className="data-[state=active]:bg-ember data-[state=active]:text-midnight text-slate data-[state=active]:shadow-[0_0_12px_rgba(245,158,11,0.3)] transition-all duration-300">Food</TabsTrigger>
-              <TabsTrigger value="shopping" className="data-[state=active]:bg-ember data-[state=active]:text-midnight text-slate data-[state=active]:shadow-[0_0_12px_rgba(245,158,11,0.3)] transition-all duration-300">Shopping</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-4 bg-white/5 border border-white/10 p-1">
+              <TabsTrigger value="transport" className="data-[state=active]:bg-ember data-[state=active]:text-midnight text-slate">Transport</TabsTrigger>
+              <TabsTrigger value="energy" className="data-[state=active]:bg-ember data-[state=active]:text-midnight text-slate">Energy</TabsTrigger>
+              <TabsTrigger value="food" className="data-[state=active]:bg-ember data-[state=active]:text-midnight text-slate">Food</TabsTrigger>
+              <TabsTrigger value="shopping" className="data-[state=active]:bg-ember data-[state=active]:text-midnight text-slate">Shopping</TabsTrigger>
             </TabsList>
             
             <div className="mt-6">
-              <TabsContent value="transport" className="data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95 data-[state=active]:duration-200">
-                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-shadow duration-300">
+              <TabsContent value="transport">
+                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <CardHeader>
                     <CardTitle className="font-serif text-2xl">Log Transport</CardTitle>
                     <CardDescription className="text-slate">Record your travels</CardDescription>
@@ -61,8 +61,8 @@ export default function ActionsPage() {
                 </Card>
               </TabsContent>
               
-              <TabsContent value="energy" className="data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95 data-[state=active]:duration-200">
-                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-shadow duration-300">
+              <TabsContent value="energy">
+                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <CardHeader>
                     <CardTitle className="font-serif text-2xl">Log Energy</CardTitle>
                     <CardDescription className="text-slate">Record home energy usage</CardDescription>
@@ -73,8 +73,8 @@ export default function ActionsPage() {
                 </Card>
               </TabsContent>
 
-              <TabsContent value="food" className="data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95 data-[state=active]:duration-200">
-                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-shadow duration-300">
+              <TabsContent value="food">
+                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <CardHeader>
                     <CardTitle className="font-serif text-2xl">Log Food</CardTitle>
                     <CardDescription className="text-slate">Record your diet footprint</CardDescription>
@@ -85,8 +85,8 @@ export default function ActionsPage() {
                 </Card>
               </TabsContent>
 
-              <TabsContent value="shopping" className="data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95 data-[state=active]:duration-200">
-                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-shadow duration-300">
+              <TabsContent value="shopping">
+                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <CardHeader>
                     <CardTitle className="font-serif text-2xl">Log Shopping</CardTitle>
                     <CardDescription className="text-slate">Record your purchases</CardDescription>
@@ -103,14 +103,12 @@ export default function ActionsPage() {
         <MotionWrapper delay={0.3} className="space-y-4">
           <h2 className="text-xl font-serif text-paper">Recent Actions</h2>
           {actions.length === 0 ? (
-            <div className="rounded-xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 animate-border-glow">
-              <p className="text-slate text-sm">No actions logged yet.</p>
-            </div>
+            <p className="text-slate text-sm">No actions logged yet.</p>
           ) : (
             <div className="space-y-3">
               {actions.map((action, i) => (
-                <MotionWrapper key={action.id} delay={0.4 + i * 0.1} hover>
-                  <Card className="bg-white/5 backdrop-blur-md border-white/10 hover:border-ember/30 hover:bg-white/[0.08] hover:shadow-[0_8px_30px_rgba(245,158,11,0.08)] transition-all duration-300 cursor-default">
+                <MotionWrapper key={action.id} delay={0.4 + i * 0.1}>
+                  <Card className="bg-white/5 backdrop-blur-md border-white/10 hover:border-ember/30 transition-colors">
                     <CardContent className="p-4 flex justify-between items-center">
                       <div>
                         <p className="font-medium capitalize text-paper">{action.subcategory}</p>
