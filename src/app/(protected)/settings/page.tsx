@@ -11,7 +11,7 @@ export default function SettingsPage() {
       </MotionWrapper>
       
       <MotionWrapper delay={0.2}>
-        <Card className="bg-white/5 backdrop-blur-md border-white/10">
+        <Card>
           <CardHeader>
             <CardTitle className="font-serif text-2xl text-paper">Profile Information</CardTitle>
             <CardDescription className="text-slate">

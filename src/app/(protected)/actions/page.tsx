@@ -8,6 +8,7 @@ import { LogEnergyForm } from '@/components/forms/log-energy'
 import { LogFoodForm } from '@/components/forms/log-food'
 import { LogShoppingForm } from '@/components/forms/log-shopping'
 import { MotionWrapper } from '@/components/motion-wrapper'
+import { Activity } from 'lucide-react'
 
 import { CarbonAction } from '@/lib/types'
 
@@ -50,7 +51,7 @@ export default function ActionsPage() {
             
             <div className="mt-6">
               <TabsContent value="transport" className="data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95 data-[state=active]:duration-200">
-                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-shadow duration-300">
+                <Card>
                   <CardHeader>
                     <CardTitle className="font-serif text-2xl">Log Transport</CardTitle>
                     <CardDescription className="text-slate">Record your travels</CardDescription>
@@ -62,7 +63,7 @@ export default function ActionsPage() {
               </TabsContent>
               
               <TabsContent value="energy" className="data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95 data-[state=active]:duration-200">
-                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-shadow duration-300">
+                <Card>
                   <CardHeader>
                     <CardTitle className="font-serif text-2xl">Log Energy</CardTitle>
                     <CardDescription className="text-slate">Record home energy usage</CardDescription>
@@ -74,7 +75,7 @@ export default function ActionsPage() {
               </TabsContent>
 
               <TabsContent value="food" className="data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95 data-[state=active]:duration-200">
-                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-shadow duration-300">
+                <Card>
                   <CardHeader>
                     <CardTitle className="font-serif text-2xl">Log Food</CardTitle>
                     <CardDescription className="text-slate">Record your diet footprint</CardDescription>
@@ -86,7 +87,7 @@ export default function ActionsPage() {
               </TabsContent>
 
               <TabsContent value="shopping" className="data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95 data-[state=active]:duration-200">
-                <Card className="backdrop-blur-lg bg-white/5 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-shadow duration-300">
+                <Card>
                   <CardHeader>
                     <CardTitle className="font-serif text-2xl">Log Shopping</CardTitle>
                     <CardDescription className="text-slate">Record your purchases</CardDescription>
@@ -103,30 +104,29 @@ export default function ActionsPage() {
         <MotionWrapper delay={0.3} className="space-y-4">
           <h2 className="text-xl font-serif text-paper">Recent Actions</h2>
           {actions.length === 0 ? (
-            <div className="rounded-xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 animate-border-glow">
+            <div className="rounded-xl flex flex-col items-center justify-center p-8 border border-white/10 animate-border-glow text-center">
+              <Activity className="w-8 h-8 text-slate mb-3 opacity-50" />
               <p className="text-slate text-sm">No actions logged yet.</p>
             </div>
           ) : (
-            <div className="space-y-3">
-              {actions.map((action, i) => (
-                <MotionWrapper key={action.id} delay={0.4 + i * 0.1} hover>
-                  <Card className="bg-white/5 backdrop-blur-md border-white/10 hover:border-ember/30 hover:bg-white/[0.08] hover:shadow-[0_8px_30px_rgba(245,158,11,0.08)] transition-all duration-300 cursor-default">
-                    <CardContent className="p-4 flex justify-between items-center">
-                      <div>
-                        <p className="font-medium capitalize text-paper">{action.subcategory}</p>
-                        <p className="text-sm text-slate capitalize">{action.category}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-bold font-mono text-ember">{action.co2_kg?.toFixed(2)} <span className="text-xs">kg</span></p>
-                        <p className="text-xs text-slate">
-                          {new Date(action.created_at).toLocaleDateString()}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </MotionWrapper>
+            <MotionWrapper stagger delay={0.4} className="space-y-3">
+              {actions.map((action) => (
+                <Card key={action.id} className="hover:border-ember/30 hover:shadow-glow-ember cursor-default">
+                  <CardContent className="p-4 flex justify-between items-center">
+                    <div>
+                      <p className="font-medium capitalize text-paper">{action.subcategory}</p>
+                      <p className="text-sm text-slate capitalize">{action.category}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-bold font-mono text-ember">{action.co2_kg?.toFixed(2)} <span className="text-xs">kg</span></p>
+                      <p className="text-xs text-slate">
+                        {new Date(action.created_at).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
-            </div>
+            </MotionWrapper>
           )}
         </MotionWrapper>
       </div>

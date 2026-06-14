@@ -4,18 +4,16 @@ import { CategoryBreakdown } from '@/components/charts/category-breakdown'
 import { ComparisonChart } from '@/components/charts/comparison-chart'
 import { MotionWrapper } from '@/components/motion-wrapper'
 
-function StatCard({ label, value, unit, delay }: { label: string; value: string; unit?: string; delay: number }) {
+function StatCard({ label, value, unit }: { label: string; value: string; unit?: string }) {
   return (
-    <MotionWrapper delay={delay} hover>
-      <div className="group rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_50px_rgba(0,0,0,0.25)] hover:border-ember/20 transition-all duration-300 hover:-translate-y-0.5 h-full relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-ember/0 to-ember/0 group-hover:from-ember/5 group-hover:to-transparent transition-all duration-500 pointer-events-none rounded-2xl" />
-        <h3 className="relative text-base font-medium text-slate uppercase tracking-wider">{label}</h3>
-        <p className="relative mt-4 text-4xl sm:text-5xl font-mono font-bold text-ember">
-          {value}
-          {unit && <span className="text-2xl text-ember/70 ml-1">{unit}</span>}
-        </p>
-      </div>
-    </MotionWrapper>
+    <div className="group rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_50px_rgba(0,0,0,0.25)] hover:border-ember/20 transition-all duration-300 hover:-translate-y-0.5 h-full relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-ember/0 to-ember/0 group-hover:from-ember/5 group-hover:to-transparent transition-all duration-500 pointer-events-none rounded-2xl" />
+      <h3 className="relative text-base font-medium text-slate uppercase tracking-wider">{label}</h3>
+      <p className="relative mt-4 text-4xl sm:text-5xl font-mono font-bold text-ember">
+        {value}
+        {unit && <span className="text-2xl text-ember/70 ml-1">{unit}</span>}
+      </p>
+    </div>
   )
 }
 
@@ -77,11 +75,11 @@ export default async function DashboardPage() {
         <p className="text-lg text-slate mt-2">Welcome to your carbon footprint tracker.</p>
       </MotionWrapper>
       
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <StatCard label="Total Footprint" value={totalCo2.toFixed(1)} unit="kg" delay={0.2} />
-        <StatCard label="Actions Logged" value={String(actionsList.length)} delay={0.3} />
-        <StatCard label="Daily Average" value={timeData.length > 0 ? (totalCo2 / timeData.length).toFixed(1) : '0'} unit="kg" delay={0.4} />
-      </div>
+      <MotionWrapper stagger delay={0.2} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <StatCard label="Total Footprint" value={totalCo2.toFixed(1)} unit="kg" />
+        <StatCard label="Actions Logged" value={String(actionsList.length)} />
+        <StatCard label="Daily Average" value={timeData.length > 0 ? (totalCo2 / timeData.length).toFixed(1) : '0'} unit="kg" />
+      </MotionWrapper>
 
       <div className="grid gap-6 md:grid-cols-2">
         <ChartCard title="Emissions Over Time" delay={0.5}>
