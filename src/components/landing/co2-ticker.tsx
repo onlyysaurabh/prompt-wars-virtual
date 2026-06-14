@@ -15,55 +15,51 @@ export function CO2Ticker() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center p-8 sm:p-12 md:p-24 bg-midnight rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden group">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ember/10 via-midnight to-midnight pointer-events-none" />
+    <div className="flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 bg-sage/40 backdrop-blur-2xl rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+      {/* Animated gradient background inside the glass */}
+      <div className="absolute inset-0 bg-gradient-to-br from-sage/20 via-transparent to-midnight/80 pointer-events-none" />
       
-      {/* Slowly rotating gradient ring */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border border-ember/10 animate-rotate-slow" style={{ animationDuration: '40s' }} />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full border border-ember/5 animate-rotate-slow" style={{ animationDuration: '55s', animationDirection: 'reverse' }} />
-      </div>
+      {/* Subtle organic noise texture (CSS driven) */}
+      <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
       
-      {/* Pulsing rings */}
+      {/* Slowly rotating glass rings */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-full border border-ember/20 animate-pulse-ring" />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-full border border-ember/15 animate-pulse-ring-delayed" />
+        <div className="w-[120%] h-[120%] rounded-full border border-white/5 animate-rotate-slow" style={{ animationDuration: '60s' }} />
       </div>
       
-      {/* Scanline */}
+      {/* Scanline / Light sweep */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-ember/30 to-transparent animate-scanline" />
+        <div className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-ember/40 to-transparent animate-scanline" style={{ animationDuration: '8s' }} />
       </div>
       
       <div className="relative z-10 text-center space-y-6">
         <motion.div
           key={co2}
-          initial={{ opacity: 0.8, y: 2, scale: 0.98 }}
+          initial={{ opacity: 0.8, y: 2, scale: 0.99 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          className="font-mono text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-ember tracking-tighter tabular-nums"
+          transition={{ type: 'spring', stiffness: 200, damping: 10 }}
+          className="font-mono text-6xl sm:text-8xl md:text-[8rem] font-medium text-ember tracking-tighter tabular-nums drop-shadow-[0_0_20px_rgba(212,255,0,0.3)]"
         >
           {co2.toFixed(2)}
-          <span className="text-3xl sm:text-4xl md:text-5xl text-ember/70 ml-2">ppm</span>
         </motion.div>
         
-        <div className="flex items-center justify-center space-x-3">
-          <div className="h-2 w-2 rounded-full bg-ember animate-pulse" />
-          <p className="text-slate uppercase tracking-widest text-sm font-medium">
-            Atmospheric CO₂ concentration, 2026
+        <div className="flex flex-col items-center justify-center space-y-2">
+          <p className="text-paper/60 uppercase tracking-[0.3em] text-xs font-semibold">
+            Global CO₂ Average
           </p>
+          <div className="flex items-center space-x-2 text-paper/40 font-mono text-xs">
+            <span>LIVE</span>
+            <div className="h-1.5 w-1.5 rounded-full bg-ember animate-pulse" />
+            <span>PPM</span>
+          </div>
         </div>
       </div>
       
-      {/* Corner accents */}
-      <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-ember/20 rounded-tl-lg" />
-      <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-ember/20 rounded-tr-lg" />
-      <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-ember/20 rounded-bl-lg" />
-      <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-ember/20 rounded-br-lg" />
+      {/* Corner crosshairs for technical feel */}
+      <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-white/20" />
+      <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-white/20" />
+      <div className="absolute bottom-6 left-6 w-4 h-4 border-b border-l border-white/20" />
+      <div className="absolute bottom-6 right-6 w-4 h-4 border-b border-r border-white/20" />
     </div>
   )
 }

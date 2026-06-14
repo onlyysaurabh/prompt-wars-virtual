@@ -30,36 +30,36 @@ function DeviceFrame({ screenshot, index }: { screenshot: typeof screenshots[num
   
   return (
     <MotionWrapper delay={0.2 + index * 0.15} whileInView hover>
-      <div className={`group rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-2xl transition-all duration-500 hover:shadow-[0_0_60px_rgba(245,158,11,0.15)] hover:scale-[1.02] ${isCenter ? 'md:-mt-4' : ''}`}>
+      <div className={`group rounded-[2rem] overflow-hidden border border-white/10 bg-sage/20 backdrop-blur-md shadow-2xl transition-all duration-700 hover:shadow-[0_20px_60px_-15px_rgba(212,255,0,0.15)] hover:scale-[1.02] ${isCenter ? 'md:-mt-8' : ''} hover:border-ember/30`}>
         {/* Browser chrome */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-white/[0.06] border-b border-white/5">
-          <div className="flex gap-1.5">
-            <span className="block w-2.5 h-2.5 rounded-full bg-red-400/60 group-hover:bg-red-400 transition-colors" />
-            <span className="block w-2.5 h-2.5 rounded-full bg-yellow-400/60 group-hover:bg-yellow-400 transition-colors" />
-            <span className="block w-2.5 h-2.5 rounded-full bg-green-400/60 group-hover:bg-green-400 transition-colors" />
+        <div className="flex items-center gap-2 px-6 py-4 bg-white/[0.03] border-b border-white/5">
+          <div className="flex gap-2">
+            <span className="block w-3 h-3 rounded-full bg-white/20 group-hover:bg-destructive transition-colors duration-500" />
+            <span className="block w-3 h-3 rounded-full bg-white/20 group-hover:bg-amber-400 transition-colors duration-500 delay-75" />
+            <span className="block w-3 h-3 rounded-full bg-white/20 group-hover:bg-ember transition-colors duration-500 delay-150" />
           </div>
           <div className="flex-1 mx-4">
-            <div className="mx-auto max-w-[180px] h-5 rounded-full bg-white/[0.08] border border-white/10 flex items-center justify-center">
-              <span className="text-[10px] text-white/30 font-mono">carbontrack.app</span>
+            <div className="mx-auto max-w-[200px] h-6 rounded-full bg-midnight/40 border border-white/5 flex items-center justify-center transition-colors group-hover:border-white/10">
+              <span className="text-[11px] text-paper/40 font-mono tracking-wider group-hover:text-paper/70 transition-colors">carbontrack.app</span>
             </div>
           </div>
         </div>
 
         {/* Screenshot image */}
-        <div className="relative aspect-[4/3] bg-midnight ring-1 ring-inset ring-white/10">
+        <div className="relative aspect-[4/3] bg-midnight ring-1 ring-inset ring-white/5">
           <Image
             src={screenshot.src}
             alt={screenshot.alt}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
-            className="object-cover object-top"
+            className="object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-700 mix-blend-screen"
           />
           {/* Hover overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-midnight/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700" />
         </div>
         
         {/* Reflection glow */}
-        <div className="absolute -bottom-1 left-4 right-4 h-8 bg-ember/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute -bottom-4 left-1/4 right-1/4 h-12 bg-ember/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
       </div>
     </MotionWrapper>
   )
@@ -67,30 +67,31 @@ function DeviceFrame({ screenshot, index }: { screenshot: typeof screenshots[num
 
 export function ScreenshotShowcase() {
   return (
-    <section className="py-24 bg-midnight relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-ember/5 via-midnight to-midnight pointer-events-none" />
+    <section className="py-32 bg-midnight relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sage/20 via-midnight to-midnight pointer-events-none" />
+      <div className="absolute bottom-0 w-full h-[1px] bg-gradient-to-r from-transparent via-sage/30 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-24 max-w-3xl mx-auto">
           <MotionWrapper delay={0.1} whileInView>
-            <h2 className="text-4xl md:text-5xl font-serif text-paper mb-6">
-              See It in Action
+            <h2 className="text-5xl md:text-6xl font-serif text-paper mb-8 tracking-tight">
+              A transparent <span className="text-ember italic">ledger.</span>
             </h2>
           </MotionWrapper>
           <MotionWrapper delay={0.2} whileInView>
-            <p className="text-lg text-slate">
-              A clear view of your emissions, your impact, and your progress.
-              Everything you need to make informed decisions.
+            <p className="text-xl text-slate leading-relaxed font-light">
+              Clear emissions tracking, granular insights, and undeniable progress. 
+              The exact interface you need to change your footprint.
             </p>
           </MotionWrapper>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-12 items-start px-4 sm:px-0">
           {screenshots.map((screenshot, i) => (
-            <div key={screenshot.caption}>
+            <div key={screenshot.caption} className="flex flex-col items-center">
               <DeviceFrame screenshot={screenshot} index={i} />
               <MotionWrapper delay={0.4 + i * 0.1}>
-                <p className="mt-4 text-center text-sm text-slate/60 font-mono uppercase tracking-widest">
+                <p className="mt-8 text-center text-xs text-ember font-mono uppercase tracking-[0.2em] font-medium">
                   {screenshot.caption}
                 </p>
               </MotionWrapper>

@@ -48,13 +48,13 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* Custom Brand Tokens (Precision Ecology) */
-  --color-midnight: #0F172A;
-  --color-paper: #FAFAF9;
-  --color-ember: #F59E0B;
-  --color-ember-deep: #D97706;
-  --color-sage: #059669;
-  --color-slate: #94A3B8;
+  /* Custom Brand Tokens (Neo-Botanical) */
+  --color-midnight: #04160D; /* Canopy */
+  --color-paper: #E0F2E9; /* Mint */
+  --color-ember: #D4FF00; /* Lime */
+  --color-ember-deep: #B5D600; /* Lime deeper */
+  --color-sage: #0A2417; /* Foliage */
+  --color-slate: #82A692; /* Bark */
   
   --font-display: var(--font-serif), ui-serif, Georgia, serif;
   --font-body: var(--font-sans), system-ui, sans-serif;
@@ -100,74 +100,74 @@
 }
 
 :root {
-  /* Light mode uses paper bg by default */
-  --background: #FAFAF9; /* paper */
-  --foreground: #0F172A; /* midnight */
+  /* Light mode uses Mint by default (though we'll lean dark for landing) */
+  --background: #E0F2E9; 
+  --foreground: #04160D; 
   --card: #ffffff;
-  --card-foreground: #0F172A;
+  --card-foreground: #04160D;
   --popover: #ffffff;
-  --popover-foreground: #0F172A;
-  --primary: #0F172A; /* midnight */
-  --primary-foreground: #FAFAF9; /* paper */
-  --secondary: #F1F5F9;
-  --secondary-foreground: #0F172A;
-  --muted: #F1F5F9;
-  --muted-foreground: #94A3B8; /* slate */
-  --accent: #F1F5F9;
-  --accent-foreground: #0F172A;
-  --destructive: #EF4444;
-  --border: #E2E8F0;
-  --input: #E2E8F0;
-  --ring: #F59E0B; /* ember */
-  --chart-1: #F59E0B; /* ember */
-  --chart-2: #059669; /* sage */
-  --chart-3: #D97706; /* ember-deep */
-  --chart-4: #0F172A; /* midnight */
-  --chart-5: #94A3B8; /* slate */
-  --radius: 0.625rem;
-  --sidebar: #FAFAF9;
-  --sidebar-foreground: #0F172A;
-  --sidebar-primary: #0F172A;
-  --sidebar-primary-foreground: #FAFAF9;
-  --sidebar-accent: #F1F5F9;
-  --sidebar-accent-foreground: #0F172A;
-  --sidebar-border: #E2E8F0;
-  --sidebar-ring: #F59E0B;
+  --popover-foreground: #04160D;
+  --primary: #04160D; 
+  --primary-foreground: #D4FF00; 
+  --secondary: #CDE3D5;
+  --secondary-foreground: #04160D;
+  --muted: #CDE3D5;
+  --muted-foreground: #82A692; 
+  --accent: #CDE3D5;
+  --accent-foreground: #04160D;
+  --destructive: #FF5A36;
+  --border: #CDE3D5;
+  --input: #CDE3D5;
+  --ring: #D4FF00; 
+  --chart-1: #0A2417; 
+  --chart-2: #D4FF00; 
+  --chart-3: #82A692; 
+  --chart-4: #04160D; 
+  --chart-5: #B5D600; 
+  --radius: 0.75rem;
+  --sidebar: #E0F2E9;
+  --sidebar-foreground: #04160D;
+  --sidebar-primary: #04160D;
+  --sidebar-primary-foreground: #D4FF00;
+  --sidebar-accent: #CDE3D5;
+  --sidebar-accent-foreground: #04160D;
+  --sidebar-border: #CDE3D5;
+  --sidebar-ring: #D4FF00;
 }
 
 .dark {
-  /* Dark mode uses midnight bg by default */
-  --background: #0F172A; /* midnight */
-  --foreground: #FAFAF9; /* paper */
-  --card: rgba(30, 41, 59, 0.85); /* Frosted glass approach on top of midnight */
-  --card-foreground: #FAFAF9;
-  --popover: #1E293B;
-  --popover-foreground: #FAFAF9;
-  --primary: #F59E0B; /* ember */
-  --primary-foreground: #0F172A; /* midnight */
-  --secondary: #1E293B;
-  --secondary-foreground: #FAFAF9;
-  --muted: #1E293B;
-  --muted-foreground: #94A3B8; /* slate */
-  --accent: #1E293B;
-  --accent-foreground: #FAFAF9;
-  --destructive: #EF4444;
-  --border: rgba(250, 250, 249, 0.1);
-  --input: rgba(250, 250, 249, 0.18);
-  --ring: #F59E0B; /* ember */
-  --chart-1: #F59E0B; /* ember */
-  --chart-2: #059669; /* sage */
-  --chart-3: #D97706; /* ember-deep */
-  --chart-4: #FAFAF9; /* paper */
-  --chart-5: #94A3B8; /* slate */
-  --sidebar: #0F172A;
-  --sidebar-foreground: #FAFAF9;
-  --sidebar-primary: #F59E0B;
-  --sidebar-primary-foreground: #0F172A;
-  --sidebar-accent: #1E293B;
-  --sidebar-accent-foreground: #FAFAF9;
-  --sidebar-border: rgba(250, 250, 249, 0.1);
-  --sidebar-ring: #F59E0B;
+  /* Dark mode uses Canopy bg by default */
+  --background: #04160D; 
+  --foreground: #E0F2E9; 
+  --card: rgba(10, 36, 23, 0.6); /* Glassmorphic foliage */
+  --card-foreground: #E0F2E9;
+  --popover: #0A2417;
+  --popover-foreground: #E0F2E9;
+  --primary: #D4FF00; 
+  --primary-foreground: #04160D; 
+  --secondary: #0A2417;
+  --secondary-foreground: #E0F2E9;
+  --muted: #0A2417;
+  --muted-foreground: #82A692; 
+  --accent: #0A2417;
+  --accent-foreground: #E0F2E9;
+  --destructive: #FF5A36;
+  --border: rgba(224, 242, 233, 0.1);
+  --input: rgba(224, 242, 233, 0.15);
+  --ring: #D4FF00; 
+  --chart-1: #D4FF00; 
+  --chart-2: #82A692; 
+  --chart-3: #B5D600; 
+  --chart-4: #E0F2E9; 
+  --chart-5: #0A2417; 
+  --sidebar: #04160D;
+  --sidebar-foreground: #E0F2E9;
+  --sidebar-primary: #D4FF00;
+  --sidebar-primary-foreground: #04160D;
+  --sidebar-accent: #0A2417;
+  --sidebar-accent-foreground: #E0F2E9;
+  --sidebar-border: rgba(224, 242, 233, 0.1);
+  --sidebar-ring: #D4FF00;
 }
 
 @layer base {

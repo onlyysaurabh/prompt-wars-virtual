@@ -10,22 +10,22 @@ interface Orb {
 }
 
 const orbs: Orb[] = [
-  { size: 200, x: '10%', y: '20%', color: 'bg-ember', animation: 'animate-drift', duration: '22s', delay: '0s', opacity: 0.06 },
-  { size: 120, x: '75%', y: '15%', color: 'bg-ember', animation: 'animate-drift-alt', duration: '28s', delay: '-8s', opacity: 0.04 },
-  { size: 280, x: '60%', y: '60%', color: 'bg-sage', animation: 'animate-drift', duration: '30s', delay: '-12s', opacity: 0.03 },
-  { size: 90, x: '30%', y: '70%', color: 'bg-ember', animation: 'animate-drift-alt', duration: '18s', delay: '-4s', opacity: 0.05 },
-  { size: 160, x: '85%', y: '45%', color: 'bg-sage', animation: 'animate-drift', duration: '26s', delay: '-16s', opacity: 0.03 },
-  { size: 70, x: '45%', y: '10%', color: 'bg-ember', animation: 'animate-drift-alt', duration: '20s', delay: '-6s', opacity: 0.05 },
-  { size: 240, x: '20%', y: '50%', color: 'bg-white', animation: 'animate-drift', duration: '32s', delay: '-20s', opacity: 0.02 },
+  { size: 400, x: '5%', y: '10%', color: 'bg-sage', animation: 'animate-drift', duration: '32s', delay: '0s', opacity: 0.15 },
+  { size: 250, x: '80%', y: '15%', color: 'bg-ember', animation: 'animate-drift-alt', duration: '28s', delay: '-8s', opacity: 0.08 },
+  { size: 500, x: '50%', y: '60%', color: 'bg-sage', animation: 'animate-drift', duration: '40s', delay: '-12s', opacity: 0.12 },
+  { size: 150, x: '25%', y: '80%', color: 'bg-white', animation: 'animate-drift-alt', duration: '22s', delay: '-4s', opacity: 0.05 },
+  { size: 300, x: '85%', y: '55%', color: 'bg-sage', animation: 'animate-drift', duration: '36s', delay: '-16s', opacity: 0.1 },
+  { size: 200, x: '45%', y: '5%', color: 'bg-ember-deep', animation: 'animate-drift-alt', duration: '25s', delay: '-6s', opacity: 0.06 },
+  { size: 350, x: '15%', y: '45%', color: 'bg-white', animation: 'animate-drift', duration: '38s', delay: '-20s', opacity: 0.04 },
 ]
 
 export function FloatingOrbs() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none mix-blend-screen" aria-hidden="true">
       {orbs.map((orb, i) => (
         <div
           key={i}
-          className={`absolute rounded-full blur-3xl ${orb.color} ${orb.animation}`}
+          className={`absolute rounded-full blur-[100px] ${orb.color} ${orb.animation}`}
           style={{
             width: orb.size,
             height: orb.size,
