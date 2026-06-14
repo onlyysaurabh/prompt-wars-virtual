@@ -30,7 +30,7 @@ function DeviceFrame({ screenshot, index }: { screenshot: typeof screenshots[num
   
   return (
     <MotionWrapper delay={0.2 + index * 0.15} whileInView hover>
-      <div className={`group rounded-[2rem] overflow-hidden border border-white/10 bg-sage/20 backdrop-blur-md shadow-2xl transition-all duration-700 hover:shadow-[0_20px_60px_-15px_rgba(212,255,0,0.15)] hover:scale-[1.02] ${isCenter ? 'md:-mt-8' : ''} hover:border-ember/30`}>
+      <div className={`group rounded-[2rem] overflow-hidden border border-white/20 bg-sage/40 backdrop-blur-md shadow-2xl transition-all duration-700 hover:shadow-[0_20px_60px_-15px_rgba(212,255,0,0.25)] hover:scale-[1.02] ${isCenter ? 'md:-mt-8' : ''} hover:border-ember/50`}>
         {/* Browser chrome */}
         <div className="flex items-center gap-2 px-6 py-4 bg-white/[0.03] border-b border-white/5">
           <div className="flex gap-2">
@@ -68,10 +68,10 @@ function DeviceFrame({ screenshot, index }: { screenshot: typeof screenshots[num
 export function ScreenshotShowcase() {
   return (
     <section className="py-32 bg-midnight relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sage/20 via-midnight to-midnight pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sage/40 via-midnight/90 to-midnight pointer-events-none" />
       <div className="absolute bottom-0 w-full h-[1px] bg-gradient-to-r from-transparent via-sage/30 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-24 max-w-3xl mx-auto">
           <MotionWrapper delay={0.1} whileInView>
             <h2 className="text-5xl md:text-6xl font-serif text-paper mb-8 tracking-tight">

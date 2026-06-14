@@ -109,24 +109,34 @@ export default function ActionsPage() {
               <p className="text-slate text-sm">No actions logged yet.</p>
             </div>
           ) : (
-            <MotionWrapper stagger delay={0.4} className="space-y-3">
-              {actions.map((action) => (
-                <Card key={action.id} className="hover:border-ember/30 hover:shadow-glow-ember cursor-default">
-                  <CardContent className="p-4 flex justify-between items-center">
-                    <div>
-                      <p className="font-medium capitalize text-paper">{action.subcategory}</p>
-                      <p className="text-sm text-slate capitalize">{action.category}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-bold font-mono text-ember">{action.co2_kg?.toFixed(2)} <span className="text-xs">kg</span></p>
-                      <p className="text-xs text-slate">
-                        {new Date(action.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </MotionWrapper>
+            <div className="relative group">
+              {/* Top scroll indicator */}
+              <div className="absolute top-0 left-0 right-0 h-6 bg-gradient-to-b from-midnight to-transparent z-10 pointer-events-none opacity-0 transition-opacity group-hover:opacity-100" />
+              
+              <div className="max-h-[500px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                <MotionWrapper stagger delay={0.4} className="space-y-3">
+                  {actions.map((action) => (
+                    <Card key={action.id} className="hover:border-ember/30 hover:shadow-glow-ember cursor-default">
+                      <CardContent className="p-4 flex justify-between items-center">
+                        <div>
+                          <p className="font-medium capitalize text-paper">{action.subcategory}</p>
+                          <p className="text-sm text-slate capitalize">{action.category}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-bold font-mono text-ember">{action.co2_kg?.toFixed(2)} <span className="text-xs">kg</span></p>
+                          <p className="text-xs text-slate">
+                            {new Date(action.created_at).toLocaleDateString()}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </MotionWrapper>
+              </div>
+
+              {/* Bottom scroll indicator */}
+              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-midnight to-transparent z-10 pointer-events-none" />
+            </div>
           )}
         </MotionWrapper>
       </div>

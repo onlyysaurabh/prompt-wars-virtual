@@ -5,10 +5,14 @@ import { FloatingOrbs } from '@/components/landing/floating-orbs'
 export default async function SignupPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const params = await searchParams;
   return (
-    <div className="dark flex min-h-[90vh] items-center justify-center bg-midnight text-paper selection:bg-ember/30 p-4 relative overflow-hidden">
+    <div className="dark flex min-h-screen items-center justify-center bg-midnight text-paper selection:bg-ember/30 p-4 relative overflow-hidden">
+      {/* Full page gradient overlays */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-ember/20 via-midnight to-midnight pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-ember/10 via-transparent to-transparent pointer-events-none" />
+      
       <FloatingOrbs />
       
-      <div className="w-full max-w-md space-y-8 rounded-2xl bg-white/5 backdrop-blur-lg p-8 shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-white/10 relative z-10 animate-subtle-bob" style={{ animationDuration: '6s' }}>
+      <div className="w-full max-w-md space-y-8 rounded-3xl bg-midnight/60 backdrop-blur-xl p-10 shadow-[0_0_40px_rgba(212,255,0,0.15)] border border-ember/30 relative z-10 animate-subtle-bob" style={{ animationDuration: '6s' }}>
         {/* Glow accent */}
         <div className="absolute -top-px left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-ember/50 to-transparent" />
         
