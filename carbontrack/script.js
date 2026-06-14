@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (entry.target.querySelector('.chart-body')) {
           animateChart();
         }
+        
+        // Add active class to hero section for parallax
+        if (entry.target.classList.contains('hero')) {
+          entry.target.classList.add('active');
+        }
       }
     });
   }, observerOptions);
@@ -38,7 +43,59 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3. Carbon Unit Counter (Signature Element)
+  // 3. Enhanced Intersection Observer for new animations
+  const enhancedObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        enhancedObserver.unobserve(entry.target);
+        
+        // Trigger card shuffling when hero section is visible
+        if (entry.target.classList.contains('hero')) {
+          shuffleCategoryCards();
+        }
+      }
+    });
+  }, { 
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  // Observe hero section for card shuffling
+  enhancedObserver.observe(document.querySelector('.hero'));
+
+  // 4. Category Card Shuffling
+  function shuffleCategoryCards() {
+    const categoryCards = document.querySelectorAll('.category-card');
+    const cards = Array.from(categoryCards);
+    
+    // Add shuffling class to all cards
+    cards.forEach(card => {
+      card.classList.add('shuffling');
+    });
+    
+    // Remove shuffling class after animation completes
+    setTimeout(() => {
+      cards.forEach(card => {
+        card.classList.remove('shuffling');
+      });
+    }, 800);
+  }
+
+  // Start shuffling every 4 seconds
+  let shuffleInterval = setInterval(shuffleCategoryCards, 4000);
+
+  // Pause shuffling when user interacts with hero section
+  const heroSection = document.querySelector('.hero');
+  heroSection.addEventListener('mouseenter', () => {
+    clearInterval(shuffleInterval);
+  });
+
+  heroSection.addEventListener('mouseleave', () => {
+    shuffleInterval = setInterval(shuffleCategoryCards, 4000);
+  });
+
+  // 5. Carbon Unit Counter (Signature Element)
   const counterElement = document.getElementById('co2-count');
   const leaves = document.querySelectorAll('.leaf-icon');
   
@@ -77,7 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       leaves[2].classList.remove('grown');
     }
-  });
+    
+    // Update CSS variable for parallax effect
+    document.body.style.setProperty('--scroll-percent', scrollPercent);
+  }, { passive: true });
 
   // Numbers animation for Community Section stats
   const statsElements = document.querySelectorAll('.stat-card h3');
