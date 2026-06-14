@@ -9,7 +9,7 @@ interface Props {
 
 export function CategoryBreakdown({ data }: Props) {
   if (!data || data.length === 0) {
-    return <div className="text-center p-8 text-slate">No data available yet.</div>
+    return <div className="text-center p-8 text-ink-secondary">No data available yet.</div>
   }
 
   const description = `Pie chart showing breakdown of carbon emissions by category.`
@@ -31,20 +31,12 @@ export function CategoryBreakdown({ data }: Props) {
             outerRadius={80}
             paddingAngle={5}
             dataKey="value"
-            stroke="rgba(250,250,249,0.1)"
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={getColor(entry.name)} />
             ))}
           </Pie>
-          <Tooltip 
-            formatter={(value: unknown) => {
-              if (typeof value === 'number') return [`${value.toFixed(1)} kg`, 'CO₂']
-              return [`${String(value)} kg`, 'CO₂']
-            }} 
-            contentStyle={{ backgroundColor: '#0F172A', borderColor: 'rgba(250,250,249,0.1)', color: '#FAFAF9' }} 
-            itemStyle={{ color: '#FAFAF9' }}
-          />
+          <Tooltip formatter={(value: number) => [`${value.toFixed(1)} kg`, 'CO₂']} />
           <Legend />
         </PieChart>
       </ResponsiveContainer>

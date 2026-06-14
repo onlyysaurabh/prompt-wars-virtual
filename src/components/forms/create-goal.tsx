@@ -12,7 +12,7 @@ import { toast } from 'sonner'
 
 const goalSchema = z.object({
   goal_type: z.enum(['monthly_target', 'category_limit', 'streak']),
-  target_co2_kg: z.number().positive('Target must be positive'),
+  target_co2_kg: z.coerce.number().positive('Target must be positive'),
 })
 
 type GoalFormData = z.infer<typeof goalSchema>
@@ -64,7 +64,7 @@ export function CreateGoalForm({ onSuccess }: { onSuccess?: () => void }) {
       </div>
       <div className="space-y-2">
         <Label>Target CO₂ Reduction (kg)</Label>
-        <Input required type="number" {...register('target_co2_kg', { valueAsNumber: true })} placeholder="100" />
+        <Input required type="number" {...register('target_co2_kg')} placeholder="100" />
       </div>
       <Button type="submit" disabled={loading} className="w-full">
         {loading ? 'Creating...' : 'Create Goal'}

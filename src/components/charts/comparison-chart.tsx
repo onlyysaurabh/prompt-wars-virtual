@@ -9,7 +9,7 @@ interface Props {
 
 export function ComparisonChart({ data }: Props) {
   if (!data || data.length === 0) {
-    return <div className="text-center p-8 text-slate">No data available yet.</div>
+    return <div className="text-center p-8 text-ink-secondary">No data available yet.</div>
   }
 
   const description = `Bar chart comparing your emissions to the average.`
@@ -18,12 +18,9 @@ export function ComparisonChart({ data }: Props) {
     <figure role="img" aria-label={description} className="w-full h-[300px]">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} aria-hidden="true">
-          <XAxis dataKey="name" stroke="#94A3B8" />
-          <YAxis stroke="#94A3B8" />
-          <Tooltip 
-            contentStyle={{ backgroundColor: '#0F172A', borderColor: 'rgba(250,250,249,0.1)', color: '#FAFAF9' }} 
-            itemStyle={{ color: '#FAFAF9' }}
-          />
+          <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" />
+          <YAxis stroke="hsl(var(--muted-foreground))" />
+          <Tooltip />
           <Bar dataKey="you" fill={CHART_COLORS.transport.fill} name="You" radius={[4, 4, 0, 0]} />
           <Bar dataKey="average" fill={CHART_COLORS.other.fill} name="Average" radius={[4, 4, 0, 0]} />
         </BarChart>

@@ -13,7 +13,7 @@ import { toast } from 'sonner'
 const profileSchema = z.object({
   display_name: z.string().optional(),
   country: z.string().optional(),
-  household_size: z.number().min(1).optional(),
+  household_size: z.coerce.number().min(1).optional(),
   energy_source: z.string().optional(),
   diet_type: z.string().optional(),
   car_info: z.string().optional(),
@@ -69,12 +69,12 @@ export function ProfileForm() {
 
       <div className="space-y-2">
         <Label>Household Size</Label>
-        <Input type="number" {...register('household_size', { valueAsNumber: true })} placeholder="1" />
+        <Input type="number" {...register('household_size')} placeholder="1" />
       </div>
 
       <div className="space-y-2">
         <Label>Primary Energy Source</Label>
-        <Select value={watch('energy_source')} onValueChange={(v) => setValue('energy_source', v || undefined)}>
+        <Select value={watch('energy_source')} onValueChange={(v) => setValue('energy_source', v)}>
           <SelectTrigger><SelectValue placeholder="Select energy source" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="grid">Grid Electricity</SelectItem>
@@ -86,7 +86,7 @@ export function ProfileForm() {
 
       <div className="space-y-2">
         <Label>Diet Type</Label>
-        <Select value={watch('diet_type')} onValueChange={(v) => setValue('diet_type', v || undefined)}>
+        <Select value={watch('diet_type')} onValueChange={(v) => setValue('diet_type', v)}>
           <SelectTrigger><SelectValue placeholder="Select diet" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="omnivore">Omnivore</SelectItem>

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { CO2Ticker } from '@/components/landing/co2-ticker'
+import { GradientMesh } from '@/components/landing/gradient-mesh'
 import { FeatureCards } from '@/components/landing/feature-cards'
+import { DashboardMockup } from '@/components/landing/dashboard-mockup'
+import { SocialProof } from '@/components/landing/social-proof'
 
 export const metadata: Metadata = {
   title: 'CarbonTrack — Understand, Track, and Reduce Your Carbon Footprint',
@@ -15,62 +17,61 @@ export const metadata: Metadata = {
 
 export default function LandingPage() {
   return (
-    <main id="main-content" className="bg-paper text-midnight">
-      {/* Hero with CO2 Ticker */}
-      <section className="relative min-h-[90vh] bg-midnight overflow-hidden flex flex-col items-center justify-center py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ember/5 via-midnight to-midnight pointer-events-none" />
+    <main id="main-content">
+      {/* Hero with gradient mesh backdrop */}
+      <section className="relative min-h-[90vh] overflow-hidden">
+        <GradientMesh />
         
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="max-w-2xl text-left">
-              {/* Eyebrow pill */}
-              <span className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest bg-ember/10 text-ember rounded-full mb-6 border border-ember/20">
-                Precision Ecology
-              </span>
-              
-              {/* Hero headline */}
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif text-paper mb-6 leading-tight">
-                Track Your Carbon <br className="hidden sm:block" />
-                <span className="text-ember italic">Footprint.</span>
-              </h1>
-              
-              <p className="text-lg text-slate mb-8 max-w-xl">
-                Carbon tracking as atmospheric science. Precise, data-rich, and personal. 
-                Understand your emissions and join the movement to reduce global CO₂ levels.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/signup"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-midnight bg-ember rounded-full hover:bg-ember-deep transition-colors shadow-[0_0_20px_rgba(245,158,11,0.3)]"
-                >
-                  Start Tracking
-                </Link>
-                <Link
-                  href="#features"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-paper bg-transparent border border-slate/30 rounded-full hover:bg-slate/10 transition-colors"
-                >
-                  Explore Features
-                </Link>
-              </div>
-            </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+          <div className="text-center max-w-3xl mx-auto">
+            {/* Eyebrow pill */}
+            <span className="inline-block px-3 py-1 text-xs font-medium bg-primary-bg-subdued-hover text-primary-deep rounded-pill mb-6">
+              YOUR CARBON FOOTPRINT, VISUALIZED
+            </span>
             
-            {/* CO2 Ticker replaces DashboardMockup and GradientMesh */}
-            <div className="w-full max-w-lg mx-auto lg:max-w-none">
-              <CO2Ticker />
+            {/* Hero headline — Inter weight 300, negative tracking */}
+            <h1 className="text-display-xxl font-display text-ink mb-6">
+              Track Your Carbon
+              <br />
+              <span className="text-primary">Footprint</span>
+            </h1>
+            
+            <p className="text-body-lg text-ink-secondary mb-8 max-w-xl mx-auto">
+              Understand, track, and reduce your carbon footprint through simple actions 
+              and personalized insights. Join thousands making a difference.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/signup"
+                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-on-primary bg-primary rounded-pill hover:bg-primary-deep transition-colors"
+              >
+                Start Tracking Free
+              </Link>
+              <Link
+                href="#features"
+                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary bg-white border border-primary rounded-pill hover:bg-primary-bg-subdued-hover transition-colors"
+              >
+                Learn More
+              </Link>
             </div>
+          </div>
+          
+          {/* Dashboard mockup */}
+          <div className="mt-16 max-w-5xl mx-auto">
+            <DashboardMockup />
           </div>
         </div>
       </section>
       
       {/* Features section */}
-      <section id="features" className="py-24 bg-paper">
+      <section id="features" className="py-24 bg-canvas-soft">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-serif text-midnight mb-6">
+          <div className="text-center mb-16">
+            <h2 className="text-display-lg font-display text-ink mb-4">
               Everything You Need to Reduce Your Impact
             </h2>
-            <p className="text-lg text-slate/80">
+            <p className="text-body-lg text-ink-secondary max-w-2xl mx-auto">
               Four simple categories to track your daily activities. 
               Get personalized insights and actionable tips to reduce your carbon footprint.
             </p>
@@ -80,19 +81,25 @@ export default function LandingPage() {
         </div>
       </section>
       
+      {/* Social proof */}
+      <section className="py-24 bg-canvas">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SocialProof />
+        </div>
+      </section>
+      
       {/* CTA section */}
-      <section className="py-24 bg-midnight relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-ember/10 via-midnight to-midnight pointer-events-none" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-serif text-paper mb-6">
+      <section className="py-24 bg-brand-dark-900">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-display-lg font-display text-on-primary mb-4">
             Ready to Make a Difference?
           </h2>
-          <p className="text-lg text-slate mb-10">
+          <p className="text-body-lg text-gray-300 mb-8">
             Start tracking your carbon footprint today. It only takes a few seconds per action.
           </p>
           <Link
             href="/signup"
-            className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-midnight bg-ember rounded-full hover:bg-ember-deep transition-colors shadow-[0_0_30px_rgba(245,158,11,0.4)]"
+            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-brand-dark-900 bg-primary rounded-pill hover:bg-primary-soft transition-colors"
           >
             Get Started Now
           </Link>

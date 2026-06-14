@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { carbonActionSchema } from './validators/action'
+import { carbonActionSchema } from '../validators/action'
 
 export type CarbonAction = z.infer<typeof carbonActionSchema> & {
   id: string

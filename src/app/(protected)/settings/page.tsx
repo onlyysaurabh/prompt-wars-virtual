@@ -1,28 +1,25 @@
 import { ProfileForm } from '@/components/forms/profile-form'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { MotionWrapper } from '@/components/motion-wrapper'
 
 export default function SettingsPage() {
   return (
-    <div className="p-4 sm:p-8 space-y-6 max-w-3xl mx-auto">
-      <MotionWrapper delay={0.1}>
-        <h1 className="text-4xl sm:text-5xl font-serif text-paper">Settings</h1>
-        <p className="text-lg text-slate mt-2">Manage your account and preferences.</p>
-      </MotionWrapper>
+    <div className="p-8 space-y-6 max-w-3xl mx-auto">
+      <div>
+        <h1 className="text-display-lg font-display text-ink">Settings</h1>
+        <p className="text-body-md text-ink-secondary">Manage your account and preferences.</p>
+      </div>
       
-      <MotionWrapper delay={0.2}>
-        <Card className="bg-white/5 backdrop-blur-md border-white/10">
-          <CardHeader>
-            <CardTitle className="font-serif text-2xl text-paper">Profile Information</CardTitle>
-            <CardDescription className="text-slate">
-              Update your profile to get more accurate carbon insights.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ProfileForm />
-          </CardContent>
-        </Card>
-      </MotionWrapper>
+      <Card>
+        <CardHeader>
+          <CardTitle>Profile Information</CardTitle>
+          <CardDescription>
+            Update your profile to get more accurate carbon insights.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ProfileForm />
+        </CardContent>
+      </Card>
     </div>
   )
 }
