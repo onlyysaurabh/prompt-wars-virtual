@@ -25,16 +25,8 @@ export const foodActionSchema = z.object({
   unit: z.enum(['kg', 'servings', 'meals']),
 })
 
-export const shoppingActionSchema = z.object({
-  category: z.literal('shopping'),
-  subcategory: z.enum(['clothing', 'electronics', 'furniture', 'other']),
-  amount: z.number().positive().max(100000),
-})
-
-
 export const carbonActionSchema = z.discriminatedUnion('category', [
   transportActionSchema,
   energyActionSchema,
   foodActionSchema,
-  shoppingActionSchema,
 ])
