@@ -1,4 +1,4 @@
-import type { CarbonAction } from '@/types'
+import type { CarbonAction } from '@/lib/types'
 import { COUNTRY_AVERAGES } from './benchmarks'
 export interface Insight {
   type: 'tip' | 'achievement' | 'comparison' | 'suggestion'
@@ -29,7 +29,13 @@ const REDUCTION_TIPS: Record<string, Insight[]> = {
 function calculateDailyAverage(actions: CarbonAction[]): number {
   if (!actions.length) return 0
   const total = actions.reduce((sum, a) => sum + a.co2_kg, 0)
-  return total / 30 // Assuming last 30 days
+  
+  const dates = actions.map(a => new Date(a.created_at).getTime())
+  const minDate = Math.min(...dates)
+  const maxDate = Math.max(...dates)
+  const diffDays = Math.max(1, Math.ceil((maxDate - minDate) / (1000 * 60 * 60 * 24)))
+  
+  return total / diffDays
 }
 
 function getCategoryTotals(actions: CarbonAction[]): Record<string, number> {

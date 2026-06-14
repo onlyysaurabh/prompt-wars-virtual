@@ -2,15 +2,30 @@
 
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { toast } from 'sonner'
 
+const profileSchema = z.object({
+  display_name: z.string().optional(),
+  country: z.string().optional(),
+  household_size: z.number().min(1).optional(),
+  energy_source: z.string().optional(),
+  diet_type: z.string().optional(),
+  car_info: z.string().optional(),
+})
+
+type ProfileFormData = z.infer<typeof profileSchema>
+
 export function ProfileForm() {
   const [loading, setLoading] = useState(false)
-  const { register, handleSubmit, setValue, watch, reset } = useForm()
+  const { register, handleSubmit, setValue, watch, reset } = useForm<ProfileFormData>({
+    resolver: zodResolver(profileSchema),
+  })
 
   useEffect(() => {
     async function fetchProfile() {
@@ -23,7 +38,7 @@ export function ProfileForm() {
     fetchProfile()
   }, [reset])
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: ProfileFormData) => {
     setLoading(true)
     try {
       const res = await fetch('/api/profile', {
@@ -54,12 +69,12 @@ export function ProfileForm() {
 
       <div className="space-y-2">
         <Label>Household Size</Label>
-        <Input type="number" {...register('household_size')} placeholder="1" />
+        <Input type="number" {...register('household_size', { valueAsNumber: true })} placeholder="1" />
       </div>
 
       <div className="space-y-2">
         <Label>Primary Energy Source</Label>
-        <Select value={watch('energy_source')} onValueChange={(v) => setValue('energy_source', v)}>
+        <Select value={watch('energy_source')} onValueChange={(v) => setValue('energy_source', v || undefined)}>
           <SelectTrigger><SelectValue placeholder="Select energy source" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="grid">Grid Electricity</SelectItem>
@@ -71,7 +86,7 @@ export function ProfileForm() {
 
       <div className="space-y-2">
         <Label>Diet Type</Label>
-        <Select value={watch('diet_type')} onValueChange={(v) => setValue('diet_type', v)}>
+        <Select value={watch('diet_type')} onValueChange={(v) => setValue('diet_type', v || undefined)}>
           <SelectTrigger><SelectValue placeholder="Select diet" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="omnivore">Omnivore</SelectItem>

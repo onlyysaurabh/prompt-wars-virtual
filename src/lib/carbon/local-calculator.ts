@@ -25,11 +25,11 @@ export function calculateCO2(data: CarbonAction): number {
   if (data.category === 'energy') {
     let factor = 1;
     if (data.subcategory === 'electricity') {
-      factor = data.unit === 'kwh' ? 0.4 : 0.4;
+      factor = 0.4;
     } else if (data.subcategory === 'gas') {
-      factor = data.unit === 'therms' ? 5.3 : data.unit === 'kwh' ? 0.2 : 0.2;
+      factor = data.unit === 'therms' ? 5.3 : 0.2;
     } else if (data.subcategory === 'heating_oil') {
-      factor = data.unit === 'liters' ? 2.68 : 2.68;
+      factor = 2.68;
     }
     return data.amount * factor;
   }

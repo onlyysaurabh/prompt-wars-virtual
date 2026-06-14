@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createServerClient } from '@/lib/supabase/server'
 
 export async function GET() {
-  const supabase = await createClient()
+  const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -17,17 +17,17 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const supabase = await createClient()
+  const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const body = await request.json()
-  const { title, target_co2, deadline } = body
+  const { goal_type, target_co2_kg } = body
 
   const { data: goal, error } = await supabase
     .from('user_goals')
-    .insert({ user_id: user.id, title, target_co2, deadline, status: 'active', current_progress: 0 })
+    .insert({ user_id: user.id, goal_type, target_co2_kg, active: true })
     .select()
     .single()
 

@@ -1,10 +1,38 @@
-import { createClient } from '@/lib/supabase/server'
+import { createServerClient } from '@/lib/supabase/server'
 import { EmissionsOverTime } from '@/components/charts/emissions-over-time'
 import { CategoryBreakdown } from '@/components/charts/category-breakdown'
 import { ComparisonChart } from '@/components/charts/comparison-chart'
+import { MotionWrapper } from '@/components/motion-wrapper'
+
+function StatCard({ label, value, unit, delay }: { label: string; value: string; unit?: string; delay: number }) {
+  return (
+    <MotionWrapper delay={delay} hover>
+      <div className="group rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_50px_rgba(0,0,0,0.25)] hover:border-ember/20 transition-all duration-300 hover:-translate-y-0.5 h-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-ember/0 to-ember/0 group-hover:from-ember/5 group-hover:to-transparent transition-all duration-500 pointer-events-none rounded-2xl" />
+        <h3 className="relative text-base font-medium text-slate uppercase tracking-wider">{label}</h3>
+        <p className="relative mt-4 text-4xl sm:text-5xl font-mono font-bold text-ember">
+          {value}
+          {unit && <span className="text-2xl text-ember/70 ml-1">{unit}</span>}
+        </p>
+      </div>
+    </MotionWrapper>
+  )
+}
+
+function ChartCard({ title, delay, children }: { title: string; delay: number; children: React.ReactNode }) {
+  return (
+    <MotionWrapper delay={delay} hover>
+      <div className="group rounded-2xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_50px_rgba(0,0,0,0.25)] hover:border-white/15 transition-all duration-300 hover:-translate-y-0.5 h-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/[0.02] group-hover:to-transparent transition-all duration-500 pointer-events-none rounded-2xl" />
+        <h3 className="relative text-lg font-serif text-paper mb-6">{title}</h3>
+        <div className="relative">{children}</div>
+      </div>
+    </MotionWrapper>
+  )
+}
 
 export default async function DashboardPage() {
-  const supabase = await createClient()
+  const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) return null
@@ -43,45 +71,31 @@ export default async function DashboardPage() {
   }))
 
   return (
-    <div className="p-8 space-y-8 max-w-6xl mx-auto">
-      <div>
-        <h1 className="text-display-lg font-display text-ink">Dashboard</h1>
-        <p className="text-body-md text-ink-secondary">Welcome to your carbon footprint tracker.</p>
-      </div>
+    <div className="p-4 sm:p-8 space-y-8 max-w-6xl mx-auto">
+      <MotionWrapper delay={0.1}>
+        <h1 className="text-4xl sm:text-5xl font-serif text-paper">Dashboard</h1>
+        <p className="text-lg text-slate mt-2">Welcome to your carbon footprint tracker.</p>
+      </MotionWrapper>
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-xl bg-white p-6 shadow-card-1 border border-hairline">
-          <h3 className="text-body-lg font-medium text-ink">Total Footprint</h3>
-          <p className="mt-2 text-display-md text-primary">{totalCo2.toFixed(1)} kg</p>
-        </div>
-        <div className="rounded-xl bg-white p-6 shadow-card-1 border border-hairline">
-          <h3 className="text-body-lg font-medium text-ink">Actions Logged</h3>
-          <p className="mt-2 text-display-md text-primary">{actionsList.length}</p>
-        </div>
-        <div className="rounded-xl bg-white p-6 shadow-card-1 border border-hairline">
-          <h3 className="text-body-lg font-medium text-ink">Daily Average</h3>
-          <p className="mt-2 text-display-md text-primary">
-            {timeData.length > 0 ? (totalCo2 / timeData.length).toFixed(1) : '0'} kg
-          </p>
-        </div>
+        <StatCard label="Total Footprint" value={totalCo2.toFixed(1)} unit="kg" delay={0.2} />
+        <StatCard label="Actions Logged" value={String(actionsList.length)} delay={0.3} />
+        <StatCard label="Daily Average" value={timeData.length > 0 ? (totalCo2 / timeData.length).toFixed(1) : '0'} unit="kg" delay={0.4} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <div className="rounded-xl bg-white p-6 shadow-card-1 border border-hairline">
-          <h3 className="text-body-lg font-medium text-ink mb-4">Emissions Over Time</h3>
+        <ChartCard title="Emissions Over Time" delay={0.5}>
           <EmissionsOverTime data={timeData} />
-        </div>
+        </ChartCard>
         
-        <div className="rounded-xl bg-white p-6 shadow-card-1 border border-hairline">
-          <h3 className="text-body-lg font-medium text-ink mb-4">Category Breakdown</h3>
+        <ChartCard title="Category Breakdown" delay={0.6}>
           <CategoryBreakdown data={categoryData} />
-        </div>
+        </ChartCard>
       </div>
 
-      <div className="rounded-xl bg-white p-6 shadow-card-1 border border-hairline">
-        <h3 className="text-body-lg font-medium text-ink mb-4">Comparison vs Average</h3>
+      <ChartCard title="Comparison vs Average" delay={0.7}>
         <ComparisonChart data={comparisonData} />
-      </div>
+      </ChartCard>
     </div>
   )
 }
