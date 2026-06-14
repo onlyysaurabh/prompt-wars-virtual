@@ -46,13 +46,13 @@ function DeviceFrame({ screenshot, index }: { screenshot: typeof screenshots[num
         </div>
 
         {/* Screenshot image */}
-        <div className="relative aspect-[4/3] bg-midnight ring-1 ring-inset ring-white/5">
+        <div className="relative aspect-[16/9] bg-midnight ring-1 ring-inset ring-white/5">
           <Image
             src={screenshot.src}
             alt={screenshot.alt}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
-            className="object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-700 mix-blend-screen"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 600px"
+            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 mix-blend-screen"
           />
           {/* Hover overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700" />
@@ -67,7 +67,7 @@ function DeviceFrame({ screenshot, index }: { screenshot: typeof screenshots[num
 
 export function ScreenshotShowcase() {
   return (
-    <section className="py-32 bg-midnight relative overflow-hidden">
+    <section id="showcase" className="min-h-[100dvh] snap-start py-32 bg-midnight relative overflow-hidden flex flex-col justify-center">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sage/40 via-midnight/90 to-midnight pointer-events-none" />
       <div className="absolute bottom-0 w-full h-[1px] bg-gradient-to-r from-transparent via-sage/30 to-transparent" />
 

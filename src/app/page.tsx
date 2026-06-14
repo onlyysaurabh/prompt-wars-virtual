@@ -6,6 +6,7 @@ import { ScreenshotShowcase } from '@/components/landing/screenshot-showcase'
 import { FloatingOrbs } from '@/components/landing/floating-orbs'
 import { ParticleGrid } from '@/components/landing/particle-grid'
 import { HeroEntrance } from '@/components/landing/hero-entrance'
+import { ScrollNav } from '@/components/landing/scroll-nav'
 
 export const metadata: Metadata = {
   title: 'CarbonTrack — Understand, Track, and Reduce Your Carbon Footprint',
@@ -19,9 +20,18 @@ export const metadata: Metadata = {
 
 export default function LandingPage() {
   return (
-    <main id="main-content" className="bg-paper text-midnight">
+    <main id="main-content" className="bg-paper text-midnight h-[100dvh] w-full overflow-y-auto snap-y snap-mandatory scroll-smooth relative">
+      <ScrollNav 
+        sections={[
+          { id: 'home', label: 'Home' },
+          { id: 'features', label: 'Features' },
+          { id: 'showcase', label: 'Showcase' },
+          { id: 'cta', label: 'Get Started' }
+        ]} 
+      />
+      
       {/* Hero with CO2 Ticker */}
-      <section className="relative min-h-[95vh] bg-midnight overflow-hidden flex flex-col items-center justify-center py-24">
+      <section id="home" className="relative min-h-[100dvh] snap-start bg-midnight overflow-hidden flex flex-col items-center justify-center py-24">
         {/* Soft aurora gradients */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sage/40 via-midnight to-midnight pointer-events-none" />
         <div className="absolute -top-[40%] -left-[20%] w-[80%] h-[80%] bg-sage/20 rounded-[100%] blur-[120px] mix-blend-screen pointer-events-none" />
@@ -42,7 +52,7 @@ export default function LandingPage() {
       </section>
       
       {/* Features section */}
-      <section id="features" className="py-32 bg-paper relative overflow-hidden">
+      <section id="features" className="py-32 min-h-[100dvh] snap-start bg-paper relative overflow-hidden flex flex-col justify-center">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           {/* Glasshouse light bleeds */}
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-ember/5 rounded-full blur-[100px] animate-float-slow" />
@@ -67,7 +77,7 @@ export default function LandingPage() {
       <ScreenshotShowcase />
       
       {/* CTA section */}
-      <section className="py-32 bg-midnight relative overflow-hidden">
+      <section id="cta" className="py-32 min-h-[100dvh] snap-start bg-midnight relative overflow-hidden flex flex-col justify-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-sage/30 via-midnight to-midnight pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] aspect-square bg-ember/5 rounded-full blur-[120px] pointer-events-none" />
         
