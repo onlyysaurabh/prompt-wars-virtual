@@ -74,20 +74,20 @@ export default function InsightsPage() {
       </MotionWrapper>
       
       {loading ? (
-        <MotionWrapper delay={0.2}>
+        <MotionWrapper key="loading" delay={0.2}>
           <div className="rounded-xl bg-white/5 backdrop-blur-lg p-6 border border-white/10 animate-border-glow">
             <p className="text-slate">Loading insights...</p>
           </div>
         </MotionWrapper>
       ) : insights.length === 0 ? (
-        <MotionWrapper delay={0.2}>
+        <MotionWrapper key="empty" delay={0.2}>
           <div className="rounded-xl flex flex-col items-center justify-center p-8 border border-white/10 animate-border-glow text-center">
             <Lightbulb className="w-8 h-8 text-slate mb-3 opacity-50" />
             <p className="text-slate text-sm">No insights available yet. Try logging more actions!</p>
           </div>
         </MotionWrapper>
       ) : (
-        <MotionWrapper stagger delay={0.2} className="grid gap-6 md:grid-cols-2">
+        <MotionWrapper key="loaded" stagger delay={0.2} className="grid gap-6 md:grid-cols-2">
           {insights.map((insight, index) => (
             <InsightCard key={index} insight={insight} />
           ))}
