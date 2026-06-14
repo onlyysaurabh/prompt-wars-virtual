@@ -46,13 +46,13 @@ function DeviceFrame({ screenshot, index }: { screenshot: typeof screenshots[num
         </div>
 
         {/* Screenshot image */}
-        <div className="relative aspect-[16/9] bg-midnight ring-1 ring-inset ring-white/5">
+        <div className="relative aspect-[8/5] bg-midnight ring-1 ring-inset ring-white/5 from-midnight to-sage/20 bg-gradient-to-br">
           <Image
             src={screenshot.src}
             alt={screenshot.alt}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 600px"
-            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 mix-blend-screen"
+            className="object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-700 mix-blend-screen"
           />
           {/* Hover overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700" />
